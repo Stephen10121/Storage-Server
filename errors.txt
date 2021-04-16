@@ -1,0 +1,1 @@
+Error #1: An error when sharing a folder.
