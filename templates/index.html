@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} 
+{% block content %}
+<div class="intro-main">
+    <div class="lmain">
+      <center>
+        <h1>
+          {% if what[2] %}
+            Hello {{ what[2][2] }}
+          {% else %}
+            Online Storage
+          {% endif %}
+        </h1><br>
+        <h3>
+          Great place to store stuff.
+        </h3>
+      </center>
+    </div>
+    <div class="rmain">
+      <center>
+        <img id="base-img" src="../static/img/storage.png" alt="base">
+      </center>
+    </div>
+  </div>
+  <div class="rating">
+    <div class="lrating">
+      <center>
+        <p id='rate-comment'>"I just loved this place. Best free storage in the world."</p>
+        <p id='rate-user'>Jeffery</p>
+      </center>
+    </div>
+    <div class="rrating">
+      <center>
+        <h1>
+          Rate it!
+        </h1><br>
+        <h3>
+          See if you like it.
+        </h3>
+      </center>
+    </div>
+  </div>
+{% endblock %}

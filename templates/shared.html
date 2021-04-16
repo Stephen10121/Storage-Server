@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/css/shared.css">
+    <link rel="shortcut icon" href="../static/img/icon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Shared With Me</title>
+</head>
+<body>
+    <div class="grid">
+        <div class="header">
+            <div class="profile-part">
+                <center>
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                    </button>
+                </center>
+            </div>
+            <div class="icon-part">
+                <div class="add-file header-icon">
+                    <center>
+                        <button title="Add File">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+                                <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </center>
+                </div>
+                <div class="add-folder header-icon">
+                    <center>
+                        <button title="Add Folder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
+                                <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+                                <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
+                            </svg>
+                        </button>
+                    </center>
+                </div>
+                <div class="home-icon header-icon">
+                    <center>
+                        <a href='/' title="Home">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                              </svg>
+                        </a>
+                    </center>
+                </div>
+                <div class="trash-icon header-icon">
+                    <center>
+                        <button title="Trash">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </center>
+                </div>
+                <div class="settings-button header-icon">
+                    <center>
+                        <button title="Settings">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                            </svg>
+                        </button>
+                    </center>    
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="foldername">
+                shared/
+            </div>
+            <div class="folder-section">
+                {% if folders %}
+                    {% for i in folders %}
+                        {% set d=i+'1' %}
+                        {% set e=i+'2' %}
+                        {% set f=i+'3' %}
+                        {% if i=="shared" or i=='trash' or "\\" in i %}
+                        {% else %}
+                            <div class="menu">
+                                <form method="POST">
+                                    <input type="submit" class="folder-name-input" name='chdir' value='{{i}}'>
+                                </form>
+                                <div class="dropdown dmusic">
+                                <button title="Menu" onclick='myFunction("{{i}}","{{d}}")' id="{{d}}" class="dot dropbtn select-folder-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                    </svg>
+                                </button>
+                                <div id="{{i}}" class="dropdown-content">
+                                    <form method="POST"><input type="submit" value="Move"></form>
+                                    <form method="POST"><input type="submit" value="Trash"></form>
+                                    <button onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
+                                    <button onclick="showRename('{{e}}')" id="myBtn">Rename</button>
+                                    <form method="POST">
+                                        <input type="hidden" name="delete_folder" value="{{i}}">
+                                        <input type="submit" name="delete_folder_submit"value="Delete">
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="{{e}}" class="modal">
+                                <div class="modal-content">
+                                <form method="POST">
+                                    <center>
+                                        <input type="hidden" name="renamepath" value='{{i}}'>
+                                        <input type="text" name='rename' placeholder="Rename to.."><br>
+                                        <input class="renamesub" type="submit" value="Rename">
+                                    </center>
+                                </form>
+                                </div>
+                            </div>
+                            <div id="{{f}}" class="modal">
+                                <div class="modal-content">
+                                <form method="POST">
+                                    <center>
+                                        <input type="hidden" name="sharewhat" value='{{i}}'>
+                                        <input type="text" name='sendto' placeholder="Share to.."><br>
+                                        <input class="renamesub" type="submit" value="Share">
+                                    </center>
+                                </form>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p id='no-folder'>No Folders</p>
+                {% endif %}
+                {% if error %}
+                    {% if error=='folder_rename_error' %}
+                        <script>console.log('Error Renaming Folder');</script>
+                    {% elif error=='folder_rename_exists' %}
+                        <script>alert('The folder your renaming exists!');</script>
+                    {% elif error=='folder_rename_spacebar' %}
+                        <script>alert('The folder cant have a spacebar!');</script>
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="file-section">
+                Files:
+            </div>
+            <div class="footer">
+                <center>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Services</a></li>
+                        {% if what[0]==True %}
+                        {% if what[1]==True %}
+                            <li><a href="/logout">Logout</a></li>
+                        {% endif %}
+                        {% else %}
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/signup">Signup</a></li>
+                        {% endif %}
+                    </ul>
+                </center>
+            </div>
+        </div>
+    </div>
+    {% if error %}
+        <div id="shareError" class="error">
+            <div class="error-content">
+            <form method="POST">
+                <center>
+                    {{ error }}
+                    <script>console.log("{{error}}");</script>
+                </center>
+            </form>
+            </div>
+        </div>
+    {% endif %}
+    <script>
+        /* I dont know half of this script */ 
+        function showRename(folder) {
+            var showit = document.getElementById(folder);
+            showit.style.display = "block";
+        }
+
+        function showShare(folder) {
+            var showit = document.getElementById(folder);
+            showit.style.display = "block";
+        }
+
+        function myFunction(id, btnid) {
+          document.getElementById(id).classList.toggle("show");
+          document.getElementById(btnid).classList.toggle("setgray");
+        }
+      
+        window.onclick = function(event) {
+            {% if folders %}
+                {% for i in folders %}
+                    {% set e=i+'2' %}
+                    {% set f=i+'3' %}
+                    {% if i=="shared" or i=='trash' %}
+                    {% else %}
+                        var what = document.getElementById('{{e}}');
+                        var what2 = document.getElementById('{{f}}');
+                        if (event.target == what2) {
+                            what2.style.display='none';
+                        }
+                        if (event.target == what) {
+                            what.style.display='none';
+                        }
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            var shareError = document.getElementById('shareError');
+            if (event.target == shareError) {
+                shareError.style.display='none';
+            }
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                var dot = document.getElementsByClassName("dot");
+                var i2;
+                for (i2 = 0; i2 < dot.length; i2++) {
+                  var openDropdown = dot[i2];
+                  if (openDropdown.classList.contains('setgray')) {
+                    openDropdown.classList.remove('setgray');
+                  }
+                }
+              }
+            }
+          }
+        }
+        </script>
+</body>
+</html>
