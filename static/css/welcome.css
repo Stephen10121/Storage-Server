@@ -1,0 +1,362 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 100px auto;
+}
+
+.header {
+    background-color: black;
+    height: 100vh;
+    bottom:0;
+    width: 100px;
+    color: white;
+}
+
+.icon-part {
+    height: 60%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 40px;
+}
+
+.header-icon button{
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+.header-icon a{
+  color: white;
+  background-color: black;
+  border: none;
+}
+
+.header-icon button:hover{
+    color: gray;
+}
+
+.header-icon button:focus {
+    outline: none;
+    color: gray;
+}
+
+.header-icon a:hover{
+  color: gray;
+}
+
+.header-icon a:focus {
+  outline: none;
+  color: gray;
+}
+
+.profile-part {
+    margin-top: 20px;
+}
+
+.profile-part button {
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+.profile-part button:hover {color:gray;}
+.profile-part button:focus {
+    color:gray;
+    outline: none;
+}
+
+.foldername {
+  display: flex;
+}
+
+.folder-location {
+  flex: 1;
+}
+
+.back-location {
+  margin-top: 3px;
+  margin-right: 10px;
+}
+
+.back-location button {
+  color: black;
+  background-color: #f3f3f3;
+  border: none;
+}
+
+.back-location button:focus {
+  outline: none;
+}
+
+.back-location button:hover {
+  color: gray;
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 30px 100px auto 40px;
+}
+
+.folder-section {
+    height: 100px;
+    display: grid;
+    grid-template-columns: 220px 220px 220px 220px 220px 220px;
+}
+
+.foldername {
+    padding-top: 5px;
+    padding-left: 5px;
+    background-color: #f3f3f3;
+}
+
+.file-section {
+    margin-top: 40px;
+}
+
+.footer {
+    background-color: black;
+}
+
+.footer ul {
+    margin:auto;
+}
+
+.footer ul li {
+    display: inline;
+}
+
+.footer ul li a {
+    color: white;
+    background-color: black;
+    padding: 5px;
+}
+
+/* Folder button styling */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content form input{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    min-width: 150px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+  }
+
+  .dropdown-content button{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    min-width: 150px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+  }
+  
+  .dropdown form input:hover {background-color: #ddd;}
+  .dropdown button:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+  
+  .menu {
+      display: grid;
+      grid-template-columns: 90% 10%;
+      width: 200px;
+      padding: 10px;
+      padding-bottom: 5px;
+      border: 2px black solid;
+      border-radius: 10px;
+      background-color: #dfdfdf;
+      height: 50px;
+      margin: 10px;
+  }
+  
+  .folder-name-input {
+      border: none;
+      font-size: 15px;
+      background-color: #dfdfdf;
+      margin-top: 3px;
+      margin-bottom: -3px;
+      cursor: pointer;
+  }
+  
+  .select-folder-button{
+      background-color: #dfdfdf;
+      border: none;
+      border-radius: 25px;
+      margin-top: 3px;
+      width: 28px;
+  }
+  
+  .select-folder-button:hover {
+      color: gray;
+      background-color: #dfdfdf;
+  }
+  
+  .setgray {
+      color: gray;
+  }
+  
+  .select-folder-button:focus {
+      outline: none;
+      background-color: #dfdfdf;
+  }
+  
+  .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #f3f3f3;
+      outline: solid 1px black;
+      width: 120px;
+      text-align: center;
+  }
+  
+  .bi {
+    pointer-events: none;
+  }
+
+/* Alert Styling */
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    position:absolute;
+  }
+
+  .galert {
+    padding: 20px;
+    background-color: rgb(7, 219, 7);
+    color: white;
+    position:absolute;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
+
+/* Modal Styling */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 5px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Input Styling */
+  
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .renamesub {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .renamesub:hover {
+    background-color: #45a049;
+  }
+
+  .error {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .error-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 5px;
+  }
