@@ -97,7 +97,7 @@ def get_folders(id, path):
         os.chdir(eid)
         if os.path.isdir('shared')!=True:
             os.mkdir('shared')
-        elif os.path.isdir('trash')!=True:
+        if os.path.isdir('trash')!=True:
             os.mkdir('trash')
         if path == 'root':
             give=[]
