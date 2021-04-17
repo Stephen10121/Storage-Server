@@ -1,4 +1,4 @@
 user_db
-__pycache__
-key.key
+__pycache__/
+*.key
 user_stuff
