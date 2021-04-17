@@ -1,6 +1,7 @@
 import functions as F
 import encrypt as E
 from flask import Flask, render_template, request, make_response, redirect, url_for
+F.user_stuff_exists()
 app = Flask('app')
 
 @app.route('/', methods=['GET', 'POST'])

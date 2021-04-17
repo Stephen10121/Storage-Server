@@ -15,6 +15,10 @@ user_rname TEXT,
 user_password TEXT,
 user_email TEXT)"""
 cursor.execute(comm)
+def user_stuff_exists():
+    isdir = os.path.isdir('user_stuff') 
+    if isdir!=True:
+        os.mkdir('user_stuff')
 
 def add_user(user_name, user_rname ,user_password, user_email):
     cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
