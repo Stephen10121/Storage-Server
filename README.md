@@ -3,7 +3,7 @@ A server that is basically like google drive. Still under development.
 
 
 # Important
-When cloning this and you want to run it, first go to functions.py, line 20(might change) where it shows this:
+When cloning this repository and you want to run it, first go to functions.py, line 20(might change) where it shows this:
 ```bash
 cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
 ```
