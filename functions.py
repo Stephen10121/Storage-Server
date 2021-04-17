@@ -3,6 +3,7 @@ import hashlib
 import sqlite3
 import encrypt as E
 from shutil import copytree, copyfile
+form cryptography.fernet import Fernet
 
 conn = sqlite3.connect('user_db', check_same_thread=False)
 cursor=conn.cursor()
@@ -20,6 +21,14 @@ def user_stuff_exists():
     if isdir!=True:
         os.mkdir('user_stuff')
 
+def key_exists():
+    if os.path.isfile('key.key')!=True:
+        key = Fernet.generate_key()
+        file = open('key.key', 'wb')
+        file.write(key)
+        file.close()
+
+    
 def add_user(user_name, user_rname ,user_password, user_email):
     cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
     conn.commit()
