@@ -3,7 +3,7 @@ import hashlib
 import sqlite3
 import encrypt as E
 from shutil import copytree, copyfile
-form cryptography.fernet import Fernet
+from cryptography.fernet import Fernet
 
 conn = sqlite3.connect('user_db', check_same_thread=False)
 cursor=conn.cursor()
