@@ -12,6 +12,3 @@ Change that into this:
 ```bash
 cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
 ```
-
-## DELETE the user_db file then:
-Run the script and signup once. After signing up, revert back to the original line and save the file.
