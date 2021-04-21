@@ -18,6 +18,8 @@ import encrypt as E
 from flask import Flask, render_template, request, make_response, redirect, url_for
 app = Flask('app')
 
+F.add_def_user('test', 'test', 'test')
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if 'WOWPOW' in request.cookies:

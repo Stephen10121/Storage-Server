@@ -34,6 +34,19 @@ def is_id(id):
     for i in get:
         return i
 
+def add_def_user(user_name, user_rname , user_email):
+    if is_id(1)==None:
+        def get_pass():
+            pass1=input("First account password: ")
+            pass2=input('Repeat first account password: ')
+            if pass1==pass2:
+                return pass1
+            else:
+                get_pass()
+        user_password = get_pass()
+        cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
+        conn.commit()
+
 def get_userinfo(id):
     get=cursor.execute("SELECT id, user_name, user_rname, user_email FROM users WHERE id=%s"%(id))
     for i in get:
