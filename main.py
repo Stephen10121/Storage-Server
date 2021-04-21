@@ -1,8 +1,21 @@
+from cryptography.fernet import Fernet
+import os
+def user_stuff_exists():
+    isdir = os.path.isdir('user_stuff') 
+    if isdir!=True:
+        os.mkdir('user_stuff')
+
+def key_exists():
+    if os.path.isfile('key.key')!=True:
+        key = Fernet.generate_key()
+        file = open('key.key', 'wb')
+        file.write(key)
+        file.close()
+user_stuff_exists()
+key_exists()
 import functions as F
 import encrypt as E
 from flask import Flask, render_template, request, make_response, redirect, url_for
-F.key_exists()
-F.user_stuff_exists()
 app = Flask('app')
 
 @app.route('/', methods=['GET', 'POST'])
