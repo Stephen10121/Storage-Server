@@ -5,7 +5,7 @@ import encrypt as E
 from shutil import copytree, copyfile
 from cryptography.fernet import Fernet
 
-conn = sqlite3.connect('user_db', check_same_thread=False)
+conn = sqlite3.connect('user_db.db', check_same_thread=False)
 cursor=conn.cursor()
 
 comm= """CREATE TABLE IF NOT EXISTS
