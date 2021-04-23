@@ -10,12 +10,33 @@ cursor=conn.cursor()
 
 comm= """CREATE TABLE IF NOT EXISTS
 users(
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-user_name TEXT,
-user_rname TEXT,
-user_password TEXT,
-user_email TEXT)"""
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name TEXT,
+    user_rname TEXT,
+    user_password TEXT,
+    user_email TEXT
+)"""
 cursor.execute(comm)
+
+comm = """CREATE TABLE IF NOT EXISTS
+stocks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    stock_owner INTEGER,
+    stock_name TEXT,
+    stock_cost TEXT,
+    stock_amount TEXT
+)"""
+
+cursor.execute(comm)
+
+def add_def_stock():
+    cursor.execute("INSERT INTO stocks (stock_owner, stock_name, stock_cost, stock_amount) VALUES (1, 'TSLA', '9.54', '10')")
+    conn.commit()
+
+def get_stock(owner_id):
+    getit = cursor.execute("SELECT stock_name FROM stocks WHERE stock_owner="+owner_id+"")
+    for i in getit:
+        print(i)
     
 def add_user(user_name, user_rname ,user_password, user_email):
     cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
