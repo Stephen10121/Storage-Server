@@ -65,6 +65,7 @@ def add_def_user(user_name, user_rname , user_email):
             else:
                 get_pass()
         user_password = get_pass()
+        user_password = hashlib.sha224(user_password.encode()).hexdigest()
         cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
         conn.commit()
 
