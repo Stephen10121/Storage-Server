@@ -6,12 +6,6 @@ This will also probably be an example of what I could do in my resume. Then I re
 To run this program, you will need to have the latest version of python3 and pip.
 
 To install the required python libraries, type these commands in bash:
-    - pip install flask
-
-    - pip install cryptography
-
-    - pip install hashlib
-
-    - pip install sqlite3
-    
-    - pip install shutil
+```
+pip install -r requirements.txt
+```

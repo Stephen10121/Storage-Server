@@ -1,0 +1,5 @@
+flask
+cryptography
+hashlib
+sqlite3
+shutil
