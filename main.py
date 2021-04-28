@@ -79,53 +79,16 @@ def home():
 def share_page():
     if 'WOWPOW' in request.cookies:
         if request.cookies['WOWPOW']=='':
-            return render_template("index.html", what=[False, True, False])
+            return redirect('/')
         else:
-            id = int(E.decrypt(request.cookies['WOWPOW'])[1])
-            dirpath = 'shared'
-            if request.method == 'POST':
-                if request.form.get('dirpath'):
-                    nowpath = request.form.get('dirpath')
-                    newpath = request.form.get('chdir')
-                    if nowpath=='shared':
-                        dirpath='shared'
-                        dirpath+='/'+newpath
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                    else:
-                        nowpath+='/'+newpath
-                        dirpath=nowpath
-                        print(nowpath,'wow')
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                elif request.form.get('sharewhat'):
-                    what = request.form.get('sharewhat')
-                    towho = request.form.get('sendto')
-                    if F.user_exists(towho)==True:
-                        what = F.share_folder(id, what, F.get_id(towho))
-                        if what=='user_has_dir':
-                            return render_template("welcome.html", error='That user has a folder named the same as the one your sharing' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                        elif what==True:
-                            return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                        else:
-                            print('error_1')
-                            return render_template("welcome.html", error='error_1' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                    else:
-                        return render_template("welcome.html", error="User doesn't exist!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                elif request.form.get('rename'):
-                    renamewhat=request.form.get('rename')
-                    path=request.form.get('renamepath')
-                    rename_result = F.rename_folder(path, renamewhat, id)
-                    if rename_result==False:
-                        return render_template("welcome.html", error='folder_rename_error' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                    elif rename_result=='rndirexists':
-                        return render_template("welcome.html", error='folder_rename_exists' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                    elif rename_result=='spacebar':
-                        return render_template("welcome.html", error='folder_rename_spacebar' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                elif request.form.get('delete_folder'):
-                    delete = request.form.get('delete_folder')
-                    if F.del_folder(delete, id)==True:
-                        return render_template("welcome.html", error='folder_delete' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
-                    else:
-                        return render_template("welcome.html", error='folder_not_delete' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+            id=int(E.decrypt(request.cookies['WOWPOW'])[1])
+            is_id = F.is_id(id)
+            if is_id != None:
+                return render_template("shared.html", what=[True, True, F.get_userinfo(id)], folders=F.get_shared_folders(id))
+            else:
+                res=make_response(redirect('/'))
+                res.set_cookie('WOWPOW', '')
+                return res
     else:
         return redirect('/')
 
