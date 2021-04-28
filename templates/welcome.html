@@ -121,7 +121,11 @@
                                         <button onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
                                         <button onclick="showRename('{{e}}')" id="myBtn">Rename</button>
                                         <form method="POST">
-                                            <input type="hidden" name="delete_folder" value="{{i}}">
+                                            {% if path=='root' %}
+                                                <input type="hidden" name="delete_folder" value='{{i}}'>
+                                            {% else %}
+                                                <input type="hidden" name="delete_folder" value='{{ path }}/{{i}}'>
+                                            {% endif %}
                                             <input type="submit" name="delete_folder_submit"value="Delete">
                                         </form>
                                     </div>

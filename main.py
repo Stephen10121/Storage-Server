@@ -68,9 +68,9 @@ def home():
                 elif request.form.get('delete_folder'):
                     delete = request.form.get('delete_folder')
                     if F.del_folder(delete, id)==True:
-                        return render_template("welcome.html", error='folder_delete' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                     else:
-                        return render_template("welcome.html", error='folder_not_delete' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
             return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
     else:
         return render_template("index.html", what=[False, True, False])

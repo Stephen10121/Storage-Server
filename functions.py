@@ -255,7 +255,6 @@ def share_folder(id, what, towhom):
             else:
                 os.chdir('..')
                 os.chdir('..')
-                print(type(what))
                 src='./'+myid+'/'+'Pics/2019'
                 dest=''
                 if '/' in what:
