@@ -135,7 +135,11 @@
                                     <div class="modal-content">
                                     <form method="POST">
                                         <center>
-                                            <input type="hidden" name="renamepath" value='{{i}}'>
+                                            {% if path=='root' %}
+                                                <input type="hidden" name="renamepath" value='{{i}}'>
+                                            {% else %}
+                                                <input type="hidden" name="renamepath" value='{{ path }}/{{i}}'>
+                                            {% endif %}
                                             <input type="text" name='rename' placeholder="Rename to.."><br>
                                             <input class="renamesub" type="submit" value="Rename">
                                         </center>

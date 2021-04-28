@@ -211,27 +211,61 @@ def rename_folder(what, renameto, id):
     isdir = os.path.isdir(eid) 
     if isdir==True:
         os.chdir(eid)
-        isdir = os.path.isdir(what)
-        if isdir==True:
-            existrndir=os.path.isdir(renameto)
-            if existrndir==True:
-                os.chdir('..')
-                os.chdir('..')
-                return 'rndirexists'
-            else:
-                if ' ' in renameto:
+        if '/' in what:
+            what2 = what.split('/')
+            for i in what2[::-1][1:][::-1]:
+                os.chdir(i)
+            isdir= os.path.isdir(what2[::-1][0])
+            if isdir==True:
+                existrndir=os.path.isdir(renameto)
+                if existrndir==True:
+                    for i in what2[::-1][1:][::-1]:
+                        os.chdir('..')
                     os.chdir('..')
                     os.chdir('..')
-                    return 'spacebar'
+                    return 'rndirexists'
                 else:
-                    os.rename(what, renameto)
+                    if ' ' in renameto:
+                        for i in what2[::-1][1:][::-1]:
+                            os.chdir('..')
+                        os.chdir('..')
+                        os.chdir('..')
+                        return 'spacebar'
+                    else:
+                        os.rename(what2[::-1][0], renameto)
+                        for i in what2[::-1][1:][::-1]:
+                            os.chdir('..')
+                        os.chdir('..')
+                        os.chdir('..')
+                        return True
+            else:
+                for i in what2[::-1][1:][::-1]:
                     os.chdir('..')
-                    os.chdir('..')
-                    return True
+                os.chdir('..')
+                os.chdir('..')
+                return False             
         else:
-            os.chdir('..')
-            os.chdir('..')
-            return False
+            isdir = os.path.isdir(what)
+            if isdir==True:
+                existrndir=os.path.isdir(renameto)
+                if existrndir==True:
+                    os.chdir('..')
+                    os.chdir('..')
+                    return 'rndirexists'
+                else:
+                    if ' ' in renameto:
+                        os.chdir('..')
+                        os.chdir('..')
+                        return 'spacebar'
+                    else:
+                        os.rename(what, renameto)
+                        os.chdir('..')
+                        os.chdir('..')
+                        return True
+            else:
+                os.chdir('..')
+                os.chdir('..')
+                return False
     else:
         os.chdir('..')
         return False

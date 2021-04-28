@@ -65,6 +65,8 @@ def home():
                         return render_template("welcome.html", error='folder_rename_exists' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                     elif rename_result=='spacebar':
                         return render_template("welcome.html", error='folder_rename_spacebar' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                    else:
+                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('delete_folder'):
                     delete = request.form.get('delete_folder')
                     if F.del_folder(delete, id)==True:
