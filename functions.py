@@ -255,7 +255,15 @@ def share_folder(id, what, towhom):
             else:
                 os.chdir('..')
                 os.chdir('..')
-                copytree('./'+myid+'/'+what, './'+eid+"/shared/"+what)
+                print(type(what))
+                src='./'+myid+'/'+'Pics/2019'
+                dest=''
+                if '/' in what:
+                    what2=what.split('/')[::-1][0]
+                    dest='./'+eid+"/shared/"+what2
+                else:
+                    dest='./'+eid+"/shared/"+what
+                copytree(src, dest)
                 os.chdir('..')
                 return True
         else:

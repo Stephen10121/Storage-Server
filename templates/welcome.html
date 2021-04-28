@@ -142,7 +142,11 @@
                                     <div class="modal-content">
                                     <form method="POST">
                                         <center>
-                                            <input type="hidden" name="sharewhat" value='{{i}}'>
+                                            {% if path=='root' %}
+                                                <input type="hidden" name="sharewhat" value='{{i}}'>
+                                            {% else %}
+                                                <input type="hidden" name="sharewhat" value='{{ path }}/{{i}}'>
+                                            {% endif %}
                                             <input type="text" name='sendto' placeholder="Share to.."><br>
                                             <input class="renamesub" type="submit" value="Share">
                                         </center>
