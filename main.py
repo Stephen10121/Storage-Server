@@ -94,6 +94,23 @@ def share_page():
     else:
         return redirect('/')
 
+@app.route('/trash', methods=['GET', 'POST'])
+def trash_page():
+    if 'WOWPOW' in request.cookies:
+        if request.cookies['WOWPOW']=='':
+            return redirect('/')
+        else:
+            id=int(E.decrypt(request.cookies['WOWPOW'])[1])
+            is_id = F.is_id(id)
+            if is_id != None:
+                return render_template("trash.html", what=[True, True, F.get_userinfo(id)], folders=F.get_trash_folders(id))
+            else:
+                res=make_response(redirect('/'))
+                res.set_cookie('WOWPOW', '')
+                return res
+    else:
+        return redirect('/')
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_form():
     if request.method == 'POST':

@@ -185,6 +185,27 @@ def get_shared_folders(id):
         os.chdir('..')
         return False
 
+def get_trash_folders(id):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    os.chdir('user_stuff')
+    isdir = os.path.isdir(eid) 
+    if isdir==True:
+        os.chdir(eid)
+        os.chdir('trash')
+        give=[]
+        for i in os.walk('./'):
+            w=i[0][2:]
+            if w!='':
+                give.append(w)
+        os.chdir('..')
+        os.chdir('..')
+        os.chdir('..')
+        return give
+    else:
+        os.mkdir(eid)
+        os.chdir('..')
+        return False
+
 def del_folder(what, id):
     eid = str(hashlib.sha224(str(id).encode()).hexdigest())
     os.chdir('user_stuff')
