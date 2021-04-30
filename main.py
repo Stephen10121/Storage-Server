@@ -31,7 +31,8 @@ def home():
             if request.method == 'POST':
                 if request.form.get('trashwhat'):
                     what=request.form.get('trashwhat')
-                    print(what)
+                    trash_it = F.trash_folder(id, what)
+                    print(trash_it)
                 elif request.form.get('dirpath'):
                     nowpath = request.form.get('dirpath')
                     newpath = request.form.get('chdir')

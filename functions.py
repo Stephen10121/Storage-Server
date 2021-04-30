@@ -3,7 +3,7 @@ import hashlib
 import sqlite3
 from cryptography.fernet import Fernet
 import encrypt as E
-from shutil import copytree, copyfile
+from shutil import copytree, copyfile, rmtree
 
 conn = sqlite3.connect('user_db.db', check_same_thread=False)
 cursor=conn.cursor()
@@ -290,6 +290,35 @@ def rename_folder(what, renameto, id):
     else:
         os.chdir('..')
         return False
+
+def trash_folder(id, what):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    os.chdir('user_stuff')
+    isdir = os.path.isdir(eid)
+    if isdir==True:
+            os.chdir(eid)
+            if '/' in what:
+                what2 = what.split('/')
+                dest=''
+                for i in what2[::-1][1:][::-1]:
+                    os.chdir(i)
+                    dest+='../'
+                copytree(what2[::-1][0], dest+'/trash/'+what2[::-1][0])
+                rmtree(what2[::-1][0])
+                for i in what2[::-1][1:][::-1]:
+                    os.chdir('..')
+                os.chdir('..')
+                os.chdir('..')
+                return True
+            else:
+                copytree(what, 'trash/'+what)
+                rmtree(what)
+                os.chdir('..')
+                os.chdir('..')
+                return True
+    else:
+        os.chdir('..')
+        return 'user_not_exists'
 
 def share_folder(id, what, towhom):
     eid = str(hashlib.sha224(str(towhom[0]).encode()).hexdigest())
