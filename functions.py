@@ -373,12 +373,10 @@ def share_file(id, what, towhom):
     else:
         os.chdir('..')
         return 'share_user_not_exists'
+        
 #Testing
 
 def testing(id):
     get=cursor.execute("SELECT user_name FROM users WHERE id='%s'"%(str(id)))
     for i in get:
         return i
-#print(testing(54))
-#print(testing(get_id('test2')[0], 'send.txt', get_id('test')[0]))
-#print(str(hashlib.sha224(str(get_id('test2')[0]).encode()).hexdigest()))

@@ -96,6 +96,41 @@
                     {% endif %}
                 </div>
                 <div class="folder-section">
+                    {% if movefolder %}
+                        {% if movefolder[0]==False %}
+                            <div id="{{movefolder[1]}}" class="modal" style="display: block;">
+                                <div class="modal-content">
+                                <form method="POST">
+                                    <center>
+                                        <input type="hidden" name="movepath" value='{{movefolder[1]}}'>
+                                        <input type="text" name='moveto' placeholder='Move "{{movefolder[1]}}" to..'><br>
+                                        <input class="renamesub" type="submit" value="Move">
+                                    </center>
+                                </form>
+                                <form method="POST">
+                                    <center>
+                                        <input class="renamesub" type="submit" name="cancel" style="background-color: #b9b9b9;" value="Cancel">
+                                    </center>
+                                </form>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div id="{{movefolder[1]}}" class="modal" style="display: block;">
+                                <div class="modal-content">
+                                <form method="POST">
+                                    <center>
+                                        <input type="hidden" name="movepath" value='{{movefolder[0]}}'>
+                                        <input type="text" name='moveto' placeholder='Move "{{movefolder[1]}}" to..'><br>
+                                        <input class="renamesub" type="submit" value="Move">
+                                    </center>
+                                </form>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <script>
+
+                        </script>
+                    {% endif %}
                     {% if folders %}
                         {% for i in folders %}
                             {% set d=i+'1' %}
@@ -116,7 +151,14 @@
                                         </svg>
                                     </button>
                                     <div id="{{i}}" class="dropdown-content">
-                                        <form method="POST"><input type="submit" value="Move"></form>
+                                        <form method="POST">
+                                            {% if path=='root' %}
+                                                <input type="hidden" name="movefolder" value='{{i}}'>
+                                            {% else %}
+                                                <input type="hidden" name="movefolder" value='{{ path }}/{{i}}'>
+                                            {% endif %}
+                                            <input type="submit" value="Move">
+                                        </form>
                                         <form method="POST">
                                             {% if path=='root' %}
                                                 <input type="hidden" name="trashwhat" value='{{i}}'>

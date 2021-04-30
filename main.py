@@ -29,10 +29,26 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get('trashwhat'):
+                if request.form.get("moveto"):
+                    moveto = request.form.get('moveto')
+                    movewhat = request.form.get('movepath')
+                    print(moveto, movewhat)
+                if request.form.get('cancel'):
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                elif request.form.get('movefolder'):
+                    what = request.form.get('movefolder')
+                    if '/' in what:
+                        what2=what.split('/')
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[what, what2[::-1][0]])
+                    else:
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[False, what])
+                elif request.form.get('trashwhat'):
                     what=request.form.get('trashwhat')
                     trash_it = F.trash_folder(id, what)
-                    print(trash_it)
+                    if trash_it==True:
+                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                    elif trash_it=='user_not_exists':
+                        return render_template("welcome.html", error='error_2', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('dirpath'):
                     nowpath = request.form.get('dirpath')
                     newpath = request.form.get('chdir')
@@ -157,9 +173,8 @@ def login_form():
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    res = make_response(render_template("index.html", what=[False, True, False]))
+    res = make_response(redirect('/'))
     res.set_cookie('WOWPOW','')
     return res
 
 app.run(host='0.0.0.0', port=8080)
-#app.run(host='10.51.33.18', port=8080)

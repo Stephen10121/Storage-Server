@@ -1,1 +1,2 @@
 Error #1: An error when sharing a folder.
+Error #2: This error gets called while moving dir to trash. The user moving the folder does not exist.
