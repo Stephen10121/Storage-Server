@@ -33,7 +33,7 @@ def home():
                     moveto = request.form.get('moveto')
                     movewhat = request.form.get('movepath')
                     print(moveto, movewhat)
-                if request.form.get('cancel'):
+                elif request.form.get('cancel'):
                     return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('movefolder'):
                     what = request.form.get('movefolder')
