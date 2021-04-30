@@ -29,7 +29,10 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get('dirpath'):
+                if request.form.get('trashwhat'):
+                    what=request.form.get('trashwhat')
+                    print(what)
+                elif request.form.get('dirpath'):
                     nowpath = request.form.get('dirpath')
                     newpath = request.form.get('chdir')
                     if nowpath=='root':
