@@ -70,8 +70,9 @@ def home():
                             return render_template("welcome.html", error='That user has a folder named the same as the one your sharing' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                         elif what==True:
                             return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                        elif what=='share_user_not_exists':
+                            return render_template("welcome.html", error="User doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                         else:
-                            print('error_1')
                             return render_template("welcome.html", error='error_1' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                     else:
                         return render_template("welcome.html", error="User doesn't exist!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
