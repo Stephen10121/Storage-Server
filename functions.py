@@ -354,8 +354,7 @@ def share_folder(id, what, towhom):
             return False
     else:
         os.chdir('..')
-        return eid, towhom
-        #return 'share_user_not_exists'
+        return 'share_user_not_exists'
 
 def share_file(id, what, towhom):
     eid = str(hashlib.sha224(str(towhom).encode()).hexdigest())
