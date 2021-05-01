@@ -9,3 +9,5 @@ To install the required python libraries, type this command in bash:
 ```
 pip install -r requirements.txt
 ```
+## Notice
+This project is still under development, so some things may not work or will change.
