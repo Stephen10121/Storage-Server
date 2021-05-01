@@ -1,2 +1,6 @@
 Error #1: An error when sharing a folder.
+  Reasons:
+    -User edited the 'WOWPOW' cookie.
 Error #2: This error gets called while moving dir to trash. The user moving the folder does not exist.
+  Reasons:
+    -User edited the 'WOWPOW' cookie.
