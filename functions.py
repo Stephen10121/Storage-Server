@@ -214,7 +214,7 @@ def del_folder(what, id):
         os.chdir(eid)
         isdeldir = os.path.isdir(what)
         if isdeldir==True:
-            os.rmdir(what)
+            rmtree(what)
             os.chdir('..')
             os.chdir('..')
             return True
