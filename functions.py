@@ -339,7 +339,7 @@ def share_folder(id, what, towhom):
             else:
                 os.chdir('..')
                 os.chdir('..')
-                src='./'+myid+'/'+'Pics/2019'
+                src='./'+myid+'/'+what
                 dest=''
                 if '/' in what:
                     what2=what.split('/')[::-1][0]

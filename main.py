@@ -41,7 +41,7 @@ def home():
                     movewhat = request.form.get('movepath')
                     moveit = F.move_dir(id, movewhat, moveto)
                     if moveit=='move_place_none':
-                        return render_template("welcome.html", error="The place you'r moving the folder to doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                        return render_template("welcome.html", error="The place you're moving the folder to doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                     elif moveit=='error_3':
                         return render_template("welcome.html", error="error_3", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                     elif moveit=='error_4':
