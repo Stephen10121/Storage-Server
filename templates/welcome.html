@@ -82,11 +82,18 @@
                             {{ what[2][1] }}/{{ path }}/
                         </div>
                         <div class="back-location">
-                            <button onclick="goBack()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                                </svg>
-                            </button>
+                            <form method="post">
+                                {% if path=='root' %}
+                                    <input type="hidden" name="goback" value='root'>
+                                {% else %}
+                                    <input type="hidden" name="goback" value='{{ path }}'>
+                                {% endif %}
+                                <button title="Go back a directory">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                                    </svg>
+                                </button>
+                            </form>
                             <script>
                                 function goBack() {
                                 window.history.back();

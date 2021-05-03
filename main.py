@@ -29,7 +29,14 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get("moveto"):
+                if request.form.get('goback'):
+                    npath = request.form.get('goback').split('/')[::-1][1:][::-1]
+                    path=''
+                    for i in npath:
+                        path+='/'+i
+                    path = path[1:] if path!='' else 'root'
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path)
+                elif request.form.get("moveto"):
                     moveto = request.form.get('moveto')
                     movewhat = request.form.get('movepath')
                     moveit = F.move_dir(id, movewhat, moveto)
@@ -67,7 +74,6 @@ def home():
                     else:
                         nowpath+='/'+newpath
                         dirpath=nowpath
-                        print(nowpath,'wow')
                         return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('sharewhat'):
                     what = request.form.get('sharewhat')
