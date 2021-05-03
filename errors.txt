@@ -6,3 +6,9 @@ Error #1: An error when sharing a folder.
 Error #2: This error gets called while moving dir to trash. The user moving the folder does not exist.
   Reasons:
     -User edited the 'WOWPOW' cookie.
+Error #3:  This error gets called while moving a file. The user moving the folder does not exist.
+  Reasons:
+    -User edited the 'WOWPOW' cookie.
+Error #4: The folder the user is trying to move doesn't exist.
+  Reasons:
+    -User Inspected element and change the input for the folder.

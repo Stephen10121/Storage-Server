@@ -372,6 +372,37 @@ def share_file(id, what, towhom):
     else:
         os.chdir('..')
         return 'share_user_not_exists'
+
+def move_dir(id, what, where):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    os.chdir('user_stuff')
+    isdir = os.path.isdir(eid)
+    if isdir==True:
+        os.chdir(eid)
+        iswhatdir = os.path.isdir(what)
+        if iswhatdir==True:
+            iswheredir=os.path.isdir(where)
+            if iswheredir==True:
+                if '/' in what:
+                    what2=what.split('/')[::-1][0]
+                    copytree(what, where+"/"+what2)
+                else:
+                    copytree(what, where+"/"+what)
+                rmtree(what)
+                os.chdir('..')
+                os.chdir('..')
+                return True
+            else:
+                os.chdir('..')
+                os.chdir('..')
+                return 'move_place_none'
+        else:
+            os.chdir('..')
+            os.chdir('..')
+            return 'error_4'
+    else:
+        os.chdir('..')
+        return 'error_3'
         
 #Testing
 

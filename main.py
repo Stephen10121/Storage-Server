@@ -32,7 +32,15 @@ def home():
                 if request.form.get("moveto"):
                     moveto = request.form.get('moveto')
                     movewhat = request.form.get('movepath')
-                    print(moveto, movewhat)
+                    moveit = F.move_dir(id, movewhat, moveto)
+                    if moveit=='move_place_none':
+                        return render_template("welcome.html", error="The place you'r moving the folder to doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                    elif moveit=='error_3':
+                        return render_template("welcome.html", error="error_3", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                    elif moveit=='error_4':
+                        return render_template("welcome.html", error="error_4", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
+                    else:
+                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('cancel'):
                     return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath)
                 elif request.form.get('movefolder'):
