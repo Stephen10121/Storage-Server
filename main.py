@@ -29,7 +29,17 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get('goback'):
+                if request.form.get('createfolderpath'):
+                    path = request.form.get('createfolderpath')
+                    fname = request.form.get('foldername')
+                    create_folder = F.create_folder(id, path, fname)
+                    if create_folder==True:
+                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path)
+                    elif create_folder=='folder_exist':
+                        return render_template("welcome.html",error="That folder already exists!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path)
+                    else:
+                        return render_template("welcome.html",error="ERROR" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path)
+                elif request.form.get('goback'):
                     npath = request.form.get('goback').split('/')[::-1][1:][::-1]
                     path=''
                     for i in npath:

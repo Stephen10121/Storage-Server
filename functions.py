@@ -403,6 +403,40 @@ def move_dir(id, what, where):
     else:
         os.chdir('..')
         return 'error_3'
+
+def create_folder(id, path, name):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    os.chdir('user_stuff')
+    isdir = os.path.isdir(eid)
+    if isdir==True:
+        os.chdir(eid)
+        if path=='root':
+            iswhatdir = os.path.isdir(name)
+            if iswhatdir!=True:
+                os.mkdir(name)
+                os.chdir('../..')
+                return True
+            else:
+                os.chdir('..')
+                os.chdir('..')
+                return 'folder_exist'
+        else:
+            os.chdir(path)
+            iswhatdir = os.path.isdir(name)
+            if iswhatdir != True:
+                os.mkdir(name)
+                for i in path.split('/'):
+                    os.chdir('..')
+                os.chdir('../..')
+                return True
+            else:
+                for i in path.split('/'):
+                    os.chdir("..")
+                os.chdir('../..')
+                return 'folder_exist'
+    else:
+        os.chdir('..')
+        return 'error_3'
         
 #Testing
 
