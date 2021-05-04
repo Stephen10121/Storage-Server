@@ -20,6 +20,13 @@ app = Flask('app')
 
 F.add_def_user('test', 'test', 'test')
 
+@app.errorhandler(404)
+def page_not_found(e):
+    if request.method == 'POST':
+        if request.form.get('home'):
+            return redirect('/')
+    return render_template('404.html'), 404
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if 'WOWPOW' in request.cookies:
