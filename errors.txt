@@ -12,3 +12,4 @@ Error #3:  This error gets called while moving a file. The user moving the folde
 Error #4: The folder the user is trying to move doesn't exist.
   Reasons:
     -User Inspected element and change the input for the folder.
+    -User reloaded the page re-moving folder and folder was already moved.

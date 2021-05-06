@@ -76,7 +76,7 @@
             <div class="main">
                 <div class="foldername">
                     {% if path=='root' %}
-                        <a href='/'>{{ what[2][1] }}</a>/
+                        <a href='/' style="color:black;">{{ what[2][1] }}</a>/
                     {% else %}
                         <div class="folder-location">
                             <div class="folder-link">
@@ -130,7 +130,7 @@
                                 <form method="POST">
                                     <center>
                                         <input type="hidden" name="movepath" value='{{movefolder[1]}}'>
-                                        <input type="text" name='moveto' placeholder='Move "{{movefolder[1]}}" to..'><br>
+                                        <input type="text" name='moveto' placeholder='Move "{{movefolder[1]}}" to.. (Start form the root folder, type "." to move file to root)'><br>
                                         <input class="renamesub" type="submit" value="Move">
                                     </center>
                                 </form>
