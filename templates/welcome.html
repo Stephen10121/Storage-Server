@@ -76,17 +76,17 @@
             <div class="main">
                 <div class="foldername">
                     {% if path=='root' %}
-                        <a href='/' style="color:black;">{{ what[2][1] }}</a>/
+                        <a href='/' style="color:black;" title="Go Home">{{ what[2][1] }}</a>/
                     {% else %}
                         <div class="folder-location">
                             <div class="folder-link">
-                                <a href="/">{{ what[2][1] }}</a>/
+                                <a href="/" title="Go Home">{{ what[2][1] }}</a>/
                             </div>
                             {% for i in path.split('/') %}
                                 <div class="folder-link">
                                     <form method="POST" class="cdir-input">
                                         <input type="hidden" name='cdirpath' value="{{path}}">
-                                        <input type="submit" name='cdir' value="{{i}}/">
+                                        <input type="submit" name='cdir' value="{{i}}/" title="Go to {{i}}">
                                     </form>
                                 </div>
                             {% endfor %}
