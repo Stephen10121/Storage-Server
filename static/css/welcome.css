@@ -360,3 +360,18 @@
     width: 80%;
     border-radius: 5px;
   }
+
+  .folder-link {
+    display: inline-block;
+  }
+
+  .folder-link a{
+    color: black;
+  }
+
+  .cdir-input input {
+    border: none;
+    outline: none;
+    background-color: #f3f3f3;
+    font-size: 15px;
+  }

@@ -36,7 +36,24 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get('createfolderpath'):
+                if request.form.get('cdir'):
+                    cdir = request.form.get('cdir')[::-1][1:][::-1]
+                    cdirpath = request.form.get('cdirpath')
+                    newpath=''
+                    j=False
+                    if '/' in cdirpath:
+                        for i in cdirpath.split('/'):
+                            if i==cdir:
+                                newpath+=i+'/'
+                                j=True
+                            else:
+                                if j==False:
+                                    newpath+=i+'/'
+                        newpath=newpath[::-1][1:][::-1]
+                    else:
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, cdirpath), path=cdirpath)
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, newpath), path=newpath)
+                elif request.form.get('createfolderpath'):
                     path = request.form.get('createfolderpath')
                     fname = request.form.get('foldername')
                     create_folder = F.create_folder(id, path, fname)
