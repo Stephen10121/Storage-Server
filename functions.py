@@ -450,7 +450,14 @@ def get_files(id, path):
     os.chdir('..')
     files2=''
     for i in files:
-        files2+='/'+i
+        if '.' in i:
+            i = i.split('.')[::-1][1:][::-1]
+            files1=''
+            for a in i:
+                files1+=a
+            files2+='/'+files1
+        else:
+            files2+='/'+i
     return files2[1:]
         
 #Testing
