@@ -13,10 +13,19 @@
 
 .header {
     background-color: black;
+    /*position: fixed;*/
     height: 100vh;
     bottom:0;
     width: 100px;
     color: white;
+}
+
+.main {
+  /*margin-left: 100px;
+  width: 90vw;
+  width: calc(100vh - 1px);*/
+  height: 100vh;
+  overflow-y:auto;
 }
 
 .icon-part {
@@ -125,7 +134,7 @@
 }
 
 .footer ul {
-    margin:auto;
+    margin-top: 5px;
 }
 
 .footer ul li {
@@ -135,7 +144,8 @@
 .footer ul li a {
     color: white;
     background-color: black;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Folder button styling */
