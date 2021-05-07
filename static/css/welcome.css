@@ -194,6 +194,23 @@
       height: 50px;
       margin: 10px;
   }
+
+  .file-menu {
+    display: grid;
+    grid-template-columns: 3% 87% 10%;
+    width: 98%;
+    padding: 10px;
+    padding-bottom: 5px;
+    border: 2px black solid;
+    border-radius: 10px;
+    background-color: #dfdfdf;
+    height: 50px;
+    margin: 10px;
+  }
+
+  .file-icon {
+    margin-bottom: -5px;
+  }
   
   .folder-name-input {
       border: none;

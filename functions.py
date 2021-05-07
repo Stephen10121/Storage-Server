@@ -4,6 +4,8 @@ import sqlite3
 from cryptography.fernet import Fernet
 import encrypt as E
 from shutil import copytree, copyfile, rmtree
+from os import listdir
+from os.path import isfile, join
 
 conn = sqlite3.connect('user_db.db', check_same_thread=False)
 cursor=conn.cursor()
@@ -437,10 +439,27 @@ def create_folder(id, path, name):
     else:
         os.chdir('..')
         return 'error_3'
+
+def get_files(id, path):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    path2=eid
+    if path!='root':
+        path2+='/'+path
+    os.chdir('user_stuff')
+    files = [f for f in listdir(path2) if isfile(join(path2, f))]
+    os.chdir('..')
+    files2=''
+    for i in files:
+        files2+='/'+i
+    return files2[1:]
         
 #Testing
 
-def testing(id):
-    get=cursor.execute("SELECT user_name FROM users WHERE id='%s'"%(str(id)))
-    for i in get:
-        return i
+def testing(id, path):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    path=eid+'/'+path
+    os.chdir('user_stuff')
+    files = [f for f in listdir(path) if isfile(join(path, f))]
+    return files
+    os.chdir('..')
+#print(testing(1, 'Pictures'))
