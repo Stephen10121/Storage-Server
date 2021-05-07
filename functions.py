@@ -454,8 +454,8 @@ def get_files(id, path):
             i = i.split('.')[::-1][1:][::-1]
             files1=''
             for a in i:
-                files1+=a
-            files2+='/'+files1
+                files1+='.'+a
+            files2+='/'+files1[1:]
         else:
             files2+='/'+i
     return files2[1:]
