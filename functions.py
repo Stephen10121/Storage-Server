@@ -377,6 +377,21 @@ def share_file(id, what, towhom):
 
 def move_dir(id, what, where):
     eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    if '..' in where:
+        if '/' in where:
+            where2=where.split('/')
+            dot=0
+            f=0
+            for i in where2:
+                if i=='..':
+                    dot+=1
+                    f+=0
+                else:
+                    f+=0
+            if dot/2>f:
+                return 'cant_move_past_root'
+        else:
+            return 'cant_move_past_root'
     os.chdir('user_stuff')
     isdir = os.path.isdir(eid)
     if isdir==True:
