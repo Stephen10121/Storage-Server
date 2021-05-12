@@ -385,6 +385,7 @@
 
   .folder-link {
     display: inline-block;
+    margin-left: -3px;
   }
 
   .folder-link a{
