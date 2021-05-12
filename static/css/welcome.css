@@ -35,12 +35,14 @@
     color: white;
     background-color: black;
     border: none;
+    padding-top: 10px;
 }
 
 .header-icon a{
   color: white;
   background-color: black;
   border: none;
+  padding-top: 30px;
 }
 
 .header-icon button:hover{
