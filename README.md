@@ -11,3 +11,4 @@ pip install -r requirements.txt
 ```
 ## Notice
 This project is still under development, so some things may not work or will change.
+why???????????? because Because why??????? because you will ruin everything Wow! I like the positivity wait.. i will let you type one line and you will see what happenesI think already showed me this. no this is not a python file Oh okay. okay watch this
