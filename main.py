@@ -59,6 +59,19 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
+                if request.form.get('delete_file'):
+                    delete = request.form.get('delete_file')
+                    path=dirpath
+                    if '/' in delete:
+                        d2 = delete.split('/')[::-1][1:][::-1]
+                        fin = ''
+                        for i in d2:
+                            fin+='/'+i
+                        path=fin[1:]
+                    if F.del_file(delete, id)==True:
+                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                    else:
+                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
                 if request.form.get('add-file-path'):
                     path = request.form.get('add-file-path')
                     add_file = request.files['add-file']

@@ -228,6 +228,26 @@ def del_folder(what, id):
         os.chdir('..')
         return False
 
+def del_file(what, id):
+    eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+    os.chdir('user_stuff')
+    isdir = os.path.isdir(eid) 
+    if isdir==True:
+        os.chdir(eid)
+        isdeldir = os.path.exists(what)
+        if isdeldir==True:
+            os.remove(what)
+            os.chdir('..')
+            os.chdir('..')
+            return True
+        else:
+            os.chdir('..')
+            os.chdir('..')
+            return False 
+    else:
+        os.chdir('..')
+        return False
+
 def rename_folder(what, renameto, id):
     eid = str(hashlib.sha224(str(id).encode()).hexdigest())
     os.chdir('user_stuff')

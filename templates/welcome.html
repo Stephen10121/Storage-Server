@@ -307,9 +307,9 @@
                                         <button style="float:left;" onclick="showRename('{{e}}')" id="myBtn">Rename</button>
                                         <form method="POST">
                                             {% if path=='root' %}
-                                                <input type="hidden" name="delete_folder" value='{{i}}'>
+                                                <input type="hidden" name="delete_file" value='{{i}}'>
                                             {% else %}
-                                                <input type="hidden" name="delete_folder" value='{{ path }}/{{i}}'>
+                                                <input type="hidden" name="delete_file" value='{{ path }}/{{i}}'>
                                             {% endif %}
                                             <input type="submit" name="delete_folder_submit"value="Delete">
                                         </form>
