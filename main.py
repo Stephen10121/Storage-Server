@@ -1,5 +1,8 @@
 from cryptography.fernet import Fernet
 import os
+from flask.helpers import send_file
+import hashlib
+
 def user_stuff_exists():
     isdir = os.path.isdir('user_stuff') 
     if isdir!=True:
@@ -26,6 +29,26 @@ def page_not_found(e):
         if request.form.get('home'):
             return redirect('/')
     return render_template('404.html'), 404
+
+@app.route('/download', methods=['GET', 'POST'])
+def download():
+    if request.cookies['WOWPOW']=='':
+            return redirect(url_for('/'))
+    else:
+        id = int(E.decrypt(request.cookies['WOWPOW'])[1])
+        eid = str(hashlib.sha224(str(id).encode()).hexdigest())
+        if request.method == 'POST':
+            if request.form.get('download'):
+                dfile = request.form.get('download')
+                dpath = request.form.get('dpath')
+                if dpath == 'root':
+                    return send_file('user_stuff\\'+eid+'\\'+dfile, attachment_filename=dfile, as_attachment=True)
+                else:
+                    return send_file('user_stuff\\'+eid+'\\'+dpath+'\\'+dfile, attachment_filename=dfile, as_attachment=True)
+            else:
+                return redirect(url_for('/'))
+        else:
+            return redirect(url_for('/'))
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

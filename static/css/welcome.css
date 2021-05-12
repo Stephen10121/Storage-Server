@@ -416,6 +416,17 @@
   margin: 10px;
 }
 
+.file-name-button {
+  border: none;
+  outline: none;
+  background-color: #dfdfdf;
+  margin-top: 4px;
+}
+
+.file-name-button:hover {
+  cursor: pointer;
+}
+
 .file-icon {
   margin-top: 2px;
 }

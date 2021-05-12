@@ -462,18 +462,11 @@ def get_files(id, path):
         path2+='/'+path
     os.chdir('user_stuff')
     files = [f for f in listdir(path2) if isfile(join(path2, f))]
-    os.chdir('..')
-    files2=''
+    files1=''
     for i in files:
-        if '.' in i:
-            i = i.split('.')[::-1][1:][::-1]
-            files1=''
-            for a in i:
-                files1+='.'+a
-            files2+='/'+files1[1:]
-        else:
-            files2+='/'+i
-    return files2[1:]
+        files1+='/'+i
+    os.chdir('..')
+    return files1[1:]
 
 def add_file(id, path, add_file):
     eid = str(hashlib.sha224(str(id).encode()).hexdigest())
