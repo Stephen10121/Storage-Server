@@ -47,6 +47,7 @@
 
 .header-icon button:hover{
     color: gray;
+    cursor: pointer;
 }
 
 .header-icon button:focus {
@@ -77,6 +78,19 @@
 .profile-part button:focus {
     color:gray;
     outline: none;
+}
+
+.add-file-show {
+  padding-top: 30px;
+}
+
+.add-file {
+  margin-top: 10px;
+}
+
+.add-file-show:hover {
+  cursor: pointer;
+  color: gray;
 }
 
 .foldername {

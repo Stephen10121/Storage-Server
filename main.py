@@ -36,7 +36,14 @@ def home():
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
             dirpath = 'root'
             if request.method == 'POST':
-                if request.form.get('file-menu'):
+                if request.form.get('add-file-path'):
+                    path = request.form.get('add-file-path')
+                    add_file = request.files['add-file']
+                    filename = secure_filename(add_file.filename)
+                    seeif = F.add_file(id, path, add_file, filename)
+                    if seeif==True:
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, file_menu_path), path=file_menu_path, files=F.get_files(id, file_menu_path), showfilemenu=file_menu)
+                elif request.form.get('file-menu'):
                     file_menu = request.form.get('file-menu')
                     file_menu_path = request.form.get('file-menu-path')
                     return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, file_menu_path), path=file_menu_path, files=F.get_files(id, file_menu_path), showfilemenu=file_menu)
