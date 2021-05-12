@@ -42,6 +42,8 @@ def home():
                     seeif = F.add_file(id, path, add_file)
                     if seeif==True:
                         return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                    elif seeif==False:
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="No file was selected!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
                 elif request.form.get('file-menu'):
                     file_menu = request.form.get('file-menu')
                     file_menu_path = request.form.get('file-menu-path')

@@ -484,14 +484,20 @@ def add_file(id, path, add_file):
             add_file.save(add_file.filename)
             os.chdir('../../')
             return True
+        else:
+            os.chdir('../../')
+            return False
     else:
-        os.chdir(path)
         if add_file.filename != '':
+            os.chdir(path)
             add_file.save(add_file.filename)
             for i in path.split('/'):
                 os.chdir('..')
             os.chdir('../../')
             return True
+        else:
+            os.chdir('../../')
+            return False
 
 #Testing
 
