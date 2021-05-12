@@ -39,10 +39,9 @@ def home():
                 if request.form.get('add-file-path'):
                     path = request.form.get('add-file-path')
                     add_file = request.files['add-file']
-                    filename = secure_filename(add_file.filename)
-                    seeif = F.add_file(id, path, add_file, filename)
+                    seeif = F.add_file(id, path, add_file)
                     if seeif==True:
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, file_menu_path), path=file_menu_path, files=F.get_files(id, file_menu_path), showfilemenu=file_menu)
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
                 elif request.form.get('file-menu'):
                     file_menu = request.form.get('file-menu')
                     file_menu_path = request.form.get('file-menu-path')

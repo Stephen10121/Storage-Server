@@ -475,14 +475,24 @@ def get_files(id, path):
             files2+='/'+i
     return files2[1:]
 
-def add_file(id, path, add_file, filename):
+def add_file(id, path, add_file):
     eid = str(hashlib.sha224(str(id).encode()).hexdigest())
     os.chdir('user_stuff')
     os.chdir(eid)
     if path=='root':
-        file.save(os.path.join())
+        if add_file.filename != '':
+            add_file.save(add_file.filename)
+            os.chdir('../../')
+            return True
+    else:
+        os.chdir(path)
+        if add_file.filename != '':
+            add_file.save(add_file.filename)
+            for i in path.split('/'):
+                os.chdir('..')
+            os.chdir('../../')
+            return True
 
-        
 #Testing
 
 def testing(id, path):
