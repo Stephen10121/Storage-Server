@@ -52,7 +52,11 @@ def download():
 
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
-    return '<center><h1>SETTINGS</h1></center>'
+    if request.cookies['WOWPOW']=='':
+        return redirect(url_for('/'))
+    else:
+        id = int(E.decrypt(request.cookies['WOWPOW'])[1])
+        return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
