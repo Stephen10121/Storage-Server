@@ -36,11 +36,14 @@
 }
 
 input:checked + .slider {
-    background-color: #38943e;
+    /*background-color: #975dd1;*/
+    background: #ef32d9;
+    background: -webkit-linear-gradient(to right, #ef32d9, #89fffd);
+    background: linear-gradient(to right, #ef32d9, #89fffd);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #38943e;
+    box-shadow: 0 0 1px #975dd1;
 }
 
 input:checked + .slider:before {

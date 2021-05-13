@@ -7,20 +7,62 @@ Settings
 <link rel="stylesheet" href="../static/css/settings.css">
 {% endblock %}
 {% block content %}
-<label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-</label><br>
-<label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-</label><br>
-<label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-</label><br>
-<label class="switch">
-    <input type="checkbox" checked>
-    <span class="slider round"></span>
-</label>
+<center>
+    <div class="sharing set-node">
+        <p>Allow sharing files.</p>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="account set-node">
+        <p>Make your account public.</p>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="light-mode set-node">
+        <p>Light/Dark Mode.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="stocks set-node">
+        <p>Enable stocks page.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="notify set-node">
+        <p>Allow Notifications.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="trash-set set-node">
+        <p>Delete file in the trash bin after 20 days.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="encryption set-node">
+        <p>Allow certain files to be password protected.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="2auth set-node">
+        <p>Enable 2-step authentication during login.</p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
+</center>
 {% endblock %}
