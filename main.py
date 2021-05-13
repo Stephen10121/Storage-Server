@@ -50,6 +50,10 @@ def download():
         else:
             return redirect(url_for('/'))
 
+@app.route('/settings', methods=['GET', 'POST'])
+def settings():
+    return '<center><h1>SETTINGS</h1></center>'
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if 'WOWPOW' in request.cookies:
