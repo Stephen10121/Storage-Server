@@ -23,6 +23,10 @@
     transition: .4s;
 }
 
+.slider:hover {
+    background-color: rgb(179, 179, 179);
+}
+
 .slider:before {
     position: absolute;
     content: "";
@@ -35,8 +39,13 @@
     transition: .4s;
 }
 
+input:checked:hover +.slider {
+    background: #e44ed2;
+    background: -webkit-linear-gradient(to right, #e44ed2, #a9e9e8);
+    background: linear-gradient(to right, #e44ed2, #a9e9e8);
+}
+
 input:checked + .slider {
-    /*background-color: #975dd1;*/
     background: #ef32d9;
     background: -webkit-linear-gradient(to right, #ef32d9, #89fffd);
     background: linear-gradient(to right, #ef32d9, #89fffd);
