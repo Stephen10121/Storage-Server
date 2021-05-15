@@ -25,3 +25,22 @@
     margin-top: 10px;
     float: left;
 }
+
+.save {
+    width: 80rem;
+}
+
+.save button {
+    float: right;
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    border: 1px black solid;
+    background-color: #dfdfdf;
+    border-radius: 5px;
+}
+
+.save button:hover {
+    border: 2px black solid;
+    background-color: #cccccc;
+}
