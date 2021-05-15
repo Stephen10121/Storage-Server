@@ -18,7 +18,7 @@ user_stuff_exists()
 key_exists()
 import functions as F
 import encrypt as E
-from flask import Flask, render_template, request, make_response, redirect, url_for
+from flask import Flask, render_template, request, make_response, redirect, url_for, jsonify
 app = Flask('app')
 
 F.add_def_user('test', 'test', 'test')
@@ -56,6 +56,10 @@ def settings():
         return redirect(url_for('/'))
     else:
         id = int(E.decrypt(request.cookies['WOWPOW'])[1])
+        if request.method == 'POST':
+            req = request.get_json()
+            print(req)
+            return render_template("settings.html", error="Saved", what=[True, True, F.get_userinfo(id)])
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
 
 @app.route('/', methods=['GET', 'POST'])
