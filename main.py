@@ -65,6 +65,16 @@ def settings():
             notify = req['Enotify']
             trash = req['Etrash']
             encrypt = req['Eencrypt']
+            upref = {
+                'share': share,
+                'account': account,
+                'lightmode': lightmode,
+                'stocks': stocks,
+                'notify': notify,
+                'trash': trash,
+                'encrypt': encrypt
+            }
+            print(upref)
             res = make_response(jsonify({'message':'Settings changed!'}), 200)
             return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
