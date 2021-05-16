@@ -17,10 +17,22 @@ function save() {
         Eencrypt: encrypt,
         Eauth: auth
     };
-    console.log(entry);
-
-    fetch(`${window.location}/settings`, {
+    
+    fetch(`${window.origin}/settings`, {
         method: "POST",
         credentials: "include",
-    });
+        body: JSON.stringify(entry),
+        cache: "no-cache",
+        headers: new Headers({
+            "content-type": "application/json"
+        })
+    }).then(function(response) {
+        if (response.status !== 200) {
+            alert('Error');
+        } else {
+            response.json().then(function (data) {
+                alert(data['message']);
+            })
+        }
+    })
 }
