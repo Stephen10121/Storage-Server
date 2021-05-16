@@ -58,8 +58,15 @@ def settings():
         id = int(E.decrypt(request.cookies['WOWPOW'])[1])
         if request.method == 'POST':
             req = request.get_json()
-            print(req)
-            return render_template("settings.html", error="Saved", what=[True, True, F.get_userinfo(id)])
+            share = req['Eshare']
+            account = req['Eaccount']
+            lightmode = req['Elightmode']
+            stocks = req['Estocks']
+            notify = req['Enotify']
+            trash = req['Etrash']
+            encrypt = req['Eencrypt']
+            res = make_response(jsonify({'message':'Settings changed!'}), 200)
+            return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
 
 @app.route('/', methods=['GET', 'POST'])
