@@ -537,19 +537,10 @@ def save_settings(id, setting):
     if is_id(id)==False:
         return False
     else:
-        comm = """
-        UPDATE pref
-        SET pref_share = """+str(setting[2])+""",
-        pref_account = """+str(setting[3])+""",
-        pref_lightmode = """+str(setting[4])+""",
-        pref_stocks = """+str(setting[5])+""",
-        pref_notify = """+str(setting[6])+""",
-        pref_trash = """+str(setting[7])+""",
-        pref_encrypt = """+str(setting[8])+"""
-        WHERE pref_owner="""+str(id)+"""
-        """
+        comm = "UPDATE pref SET pref_share = "+str(setting[2])+", pref_account = "+str(setting[3])+", pref_lightmode = "+str(setting[4])+", pref_stocks = "+str(setting[5])+", pref_notify = "+str(setting[6])+", pref_trash = "+str(setting[7])+", pref_encrypt = "+str(setting[8])+" WHERE pref_owner="+str(id)+";"
         cursor.execute(comm)
         conn.commit()
+        return True
 
 def get_settings(id):
     if is_id(id)==False:

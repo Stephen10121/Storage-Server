@@ -67,10 +67,14 @@ def settings():
                 'trash': req['Etrash'],
                 'encrypt': req['Eencrypt']
             }
-            F.save_settings(id, upref)
-            pref = F.get_settings(id)
-            res = make_response(jsonify({'message':'Settings changed!'}), 200)
-            return res
+            if F.save_settings(id, upref) != True:
+                res = make_response(jsonify({'message':'Error!'}), 200)
+                return res
+            else:
+                pref = F.get_settings(id)
+                print(pref)
+                res = make_response(jsonify({'message':'Settings changed!'}), 200)
+                return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
 
 @app.route('/', methods=['GET', 'POST'])
