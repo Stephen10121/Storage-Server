@@ -67,7 +67,7 @@ def settings():
                 'trash': req['Etrash'],
                 'encrypt': req['Eencrypt']
             }
-            print(upref)
+            F.save_settings(id, upref)
             res = make_response(jsonify({'message':'Settings changed!'}), 200)
             return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])

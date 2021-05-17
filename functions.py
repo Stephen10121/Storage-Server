@@ -31,6 +31,25 @@ stocks (
 
 cursor.execute(comm)
 
+comm = """CREATE TABLE IF NOT EXISTS
+pref (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pref_owner INTEGER,
+    pref_share INTEGER,
+    pref_account INTEGER,
+    pref_lightmode INTEGER,
+    pref_stocks INTEGER,
+    pref_notify INTEGER,
+    pref_trash INTEGER,
+    pref_encrypt INTEGER
+)"""
+
+cursor.execute(comm)
+
+def add_def_pref():
+    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt) VALUES (1, 1, 0, 0, 0, 0, 0, 0)")
+    conn.commit()
+
 def add_def_stock():
     cursor.execute("INSERT INTO stocks (stock_owner, stock_name, stock_cost, stock_amount) VALUES (1, 'TSLA', '9.54', '10')")
     conn.commit()
@@ -70,6 +89,7 @@ def add_def_user(user_name, user_rname , user_email):
         user_password = hashlib.sha224(user_password.encode()).hexdigest()
         cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
         conn.commit()
+        add_def_pref()
 
 def get_userinfo(id):
     get=cursor.execute("SELECT id, user_name, user_rname, user_email FROM users WHERE id=%s"%(id))
@@ -511,6 +531,14 @@ def add_file(id, path, add_file):
         else:
             os.chdir('../../')
             return False
+            
+def save_settings(id, setting):
+    if is_id(id)==False:
+        return False
+    else:
+        prefs = cursor.execute('SELECT id FROM pref WHERE pref_owner=1')
+        for i in prefs:
+            print(i)
 
 #Testing
 
