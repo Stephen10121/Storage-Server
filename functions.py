@@ -34,7 +34,7 @@ cursor.execute(comm)
 comm = """CREATE TABLE IF NOT EXISTS
 pref (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    pref_owner INTEGER,
+    pref_owner INTEGER UNIQUE,
     pref_share INTEGER,
     pref_account INTEGER,
     pref_lightmode INTEGER,
@@ -46,8 +46,8 @@ pref (
 
 cursor.execute(comm)
 
-def add_def_pref():
-    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt) VALUES (1, 1, 0, 0, 0, 0, 0, 0)")
+def add_def_pref(id):
+    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt) VALUES ("+str(id)+", 1, 0, 0, 0, 0, 0, 0)")
     conn.commit()
 
 def add_def_stock():
@@ -89,7 +89,7 @@ def add_def_user(user_name, user_rname , user_email):
         user_password = hashlib.sha224(user_password.encode()).hexdigest()
         cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
         conn.commit()
-        add_def_pref()
+        add_def_pref(1)
 
 def get_userinfo(id):
     get=cursor.execute("SELECT id, user_name, user_rname, user_email FROM users WHERE id=%s"%(id))
@@ -115,6 +115,7 @@ def signup(u,p,rp,name,email):
             p2 =hashlib.sha224(p.encode()).hexdigest()
             add_user(u, name, p2, email)
             id=get_id(u)
+            add_def_pref(id)
             return get_userinfo(id)
         else:
             return 'passwordmatch'
@@ -531,14 +532,32 @@ def add_file(id, path, add_file):
         else:
             os.chdir('../../')
             return False
-            
+
 def save_settings(id, setting):
     if is_id(id)==False:
         return False
     else:
-        prefs = cursor.execute('SELECT id FROM pref WHERE pref_owner=1')
-        for i in prefs:
-            print(i)
+        comm = """
+        UPDATE pref
+        SET pref_share = """+str(setting[2])+""",
+        pref_account = """+str(setting[3])+""",
+        pref_lightmode = """+str(setting[4])+""",
+        pref_stocks = """+str(setting[5])+""",
+        pref_notify = """+str(setting[6])+""",
+        pref_trash = """+str(setting[7])+""",
+        pref_encrypt = """+str(setting[8])+"""
+        WHERE pref_owner="""+str(id)+"""
+        """
+        cursor.execute(comm)
+        conn.commit()
+
+def get_settings(id):
+    if is_id(id)==False:
+        return False
+    else:
+        get_set = cursor.execute('SELECT * FROM pref WHERE pref_owner='+str(id)+'')
+        for i in get_set:
+            return i
 
 #Testing
 

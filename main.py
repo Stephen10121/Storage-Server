@@ -68,6 +68,7 @@ def settings():
                 'encrypt': req['Eencrypt']
             }
             F.save_settings(id, upref)
+            pref = F.get_settings(id)
             res = make_response(jsonify({'message':'Settings changed!'}), 200)
             return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
