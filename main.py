@@ -65,15 +65,15 @@ def settings():
                 'stocks': req['Estocks'],
                 'notify': req['Enotify'],
                 'trash': req['Etrash'],
-                'encrypt': req['Eencrypt']
+                'encrypt': req['Eencrypt'],
+                'auth': req['Eauth']
             }
             if F.save_settings(id, upref) != True:
                 res = make_response(jsonify({'message':'Error!'}), 200)
                 return res
             else:
-                pref = F.get_settings(id)
-                print(pref)
-                res = make_response(jsonify({'message':'Settings changed!'}), 200)
+                seting = F.get_settings(id)
+                res = make_response(jsonify({'message':'Settings changed!', 'settings': F.get_settings(id)[2:]}), 200)
                 return res
         return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
 

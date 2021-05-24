@@ -41,13 +41,14 @@ pref (
     pref_stocks INTEGER,
     pref_notify INTEGER,
     pref_trash INTEGER,
-    pref_encrypt INTEGER
+    pref_encrypt INTEGER,
+    pref_auth INTEGER
 )"""
 
 cursor.execute(comm)
 
 def add_def_pref(id):
-    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt) VALUES ("+str(id)+", 1, 0, 0, 0, 0, 0, 0)")
+    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt, pref_auth) VALUES ("+str(id)+", 1, 0, 0, 0, 0, 0, 0, 0)")
     conn.commit()
 
 def add_def_stock():
@@ -537,7 +538,7 @@ def save_settings(id, setting):
     if is_id(id)==False:
         return False
     else:
-        comm = "UPDATE pref SET pref_share = "+str(setting[2])+", pref_account = "+str(setting[3])+", pref_lightmode = "+str(setting[4])+", pref_stocks = "+str(setting[5])+", pref_notify = "+str(setting[6])+", pref_trash = "+str(setting[7])+", pref_encrypt = "+str(setting[8])+" WHERE pref_owner="+str(id)+";"
+        comm = "UPDATE pref SET pref_share = "+str(setting['share'])+", pref_account = "+str(setting['account'])+", pref_lightmode = "+str(setting['lightmode'])+", pref_stocks = "+str(setting['stocks'])+", pref_notify = "+str(setting['notify'])+", pref_trash = "+str(setting['trash'])+", pref_encrypt = "+str(setting['encrypt'])+", pref_auth = "+str(setting['auth'])+" WHERE pref_owner="+str(id)+";"
         cursor.execute(comm)
         conn.commit()
         return True

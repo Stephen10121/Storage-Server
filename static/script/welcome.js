@@ -32,6 +32,9 @@ function save() {
         } else {
             response.json().then(function (data) {
                 alert(data['message']);
+                //var settings = data['settings'];
+                //encrypt = true;
+                console.log(settings);
             })
         }
     })
