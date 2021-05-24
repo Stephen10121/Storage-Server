@@ -11,56 +11,88 @@ Settings
     <div class="sharing set-node">
         <p>Allow sharing files.</p>
         <label class="switch">
-            <input id='sharing' type="checkbox" checked>
+            {% if  settings[0]==1 %}
+                <input id='sharing' type="checkbox" checked>
+            {% else %}
+                <input id='sharing' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="account set-node">
         <p>Make your account public.</p>
         <label class="switch">
-            <input id='account' type="checkbox" checked>
+            {% if  settings[1]==1 %}
+                <input id='account' type="checkbox" checked>
+            {% else %}
+                <input id='account' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="light-mode set-node">
         <p>Light/Dark Mode.</p>
         <label class="switch">
-            <input id='light-mode' type="checkbox">
+            {% if  settings[2]==1 %}
+                <input id='light-mode' type="checkbox" checked>
+            {% else %}
+                <input id='light-mode' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="stocks set-node">
         <p>Enable stocks page.</p>
         <label class="switch">
-            <input id='stocks' type="checkbox">
+            {% if  settings[3]==1 %}
+                <input id='stocks' type="checkbox" checked>
+            {% else %}
+                <input id='stocks' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="notify set-node">
         <p>Allow Notifications.</p>
         <label class="switch">
-            <input id='notify' type="checkbox">
+            {% if  settings[4]==1 %}
+                <input id='notify' type="checkbox" checked>
+            {% else %}
+                <input id='notify' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="trash-set set-node">
         <p>Delete file in the trash bin after 20 days.</p>
         <label class="switch">
-            <input id='trash-set' type="checkbox">
+            {% if  settings[5]==1 %}
+                <input id='trash-set' type="checkbox" checked>
+            {% else %}
+                <input id='trash-set' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="encryption set-node">
         <p>Allow certain files to be password protected.</p>
         <label class="switch">
-            <input id='encryption' type="checkbox">
+            {% if  settings[6]==1 %}
+                <input id='encryption' type="checkbox" checked>
+            {% else %}
+                <input id='encryption' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>
     <div class="2auth set-node">
         <p>Enable 2-step authentication during login.</p>
         <label class="switch">
-            <input id='2auth' type="checkbox">
+            {% if  settings[7]==1 %}
+                <input id='2auth' type="checkbox" checked>
+            {% else %}
+                <input id='2auth' type="checkbox">
+            {% endif %}
             <span class="slider round"></span>
         </label>
     </div>

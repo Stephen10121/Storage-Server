@@ -56,6 +56,7 @@ def settings():
         return redirect(url_for('/'))
     else:
         id = int(E.decrypt(request.cookies['WOWPOW'])[1])
+        setting = F.get_settings(id)[2:]
         if request.method == 'POST':
             req = request.get_json()
             upref = {
@@ -72,10 +73,12 @@ def settings():
                 res = make_response(jsonify({'message':'Error!'}), 200)
                 return res
             else:
-                seting = F.get_settings(id)
+                setting = F.get_settings(id)[2:]
+                print(type(setting[0]))
                 res = make_response(jsonify({'message':'Settings changed!', 'settings': F.get_settings(id)[2:]}), 200)
                 return res
-        return render_template("settings.html", what=[True, True, F.get_userinfo(id)])
+        else:
+            return render_template("settings.html", what=[True, True, F.get_userinfo(id)], settings=setting)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
