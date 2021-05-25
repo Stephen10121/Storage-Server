@@ -1,3 +1,21 @@
+function ShowNotification(what) {
+    const notification = new Notification("From stephen15.tk.", {
+        body: what
+    });
+}
+
+if (Notification.permission === 'granted') {
+    //alert('notifications granted');
+    ShowNotification("Your notifications are on.");
+//} else if (Notification.permission !== 'denied'){
+} else {
+    Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+            ShowNotification("Now your notifications are on.");
+        }
+    });
+}
+
 function save() {
     var share = document.getElementById('sharing').checked;
     var account = document.getElementById('account').checked;
