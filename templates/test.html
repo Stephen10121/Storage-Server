@@ -6,93 +6,27 @@
   <title>Testing Site</title>
 </head>
 <body>
-  <div class="menu">
-    <p>testing</p>
-    <div class="dropdown dmusic">
-    <button title="Menu" onclick='myFunction("{{i}}","{{d}}")' id="{{d}}" class="dot dropbtn select-folder-button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi" viewBox="0 0 16 16">
-        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-        </svg>
-    </button>
-    <div id="{{i}}" class="dropdown-content">
-        <form method="POST"><input type="submit" value="Cut"></form>
-        <form method="POST"><input type="submit" value="Copy"></form>
-        <form method="POST"><input type="submit" value="Share"></form>
-        <button id="myBtn">Rename</button>
-        <form method="POST">
-            <input type="hidden" name="delete_folder" value="{{i}}">
-            <input type="submit" name="delete_folder_submit"value="Delete">
-        </form>
-    </div>
-    </div>
-</div>
-<div id="myModal" class="modal">
-	<!-- Yes, Modal Content -->
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <form method="POST">
-      <center>
-        <input type="text" name='rename' placeholder="Rename to.."><br>
-        <input class="renamesub" type="submit" value="Rename">
-      </center>
-    </form>
-  </div>
-
-</div>
-<svg xmlns="http://www.w3.org/2000/svg" width="30" style="color:white;background-color:black;" height="30" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
-  <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
-  <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
-</svg>
-
+  Cool stuff
+  <button onclick="lightTheme()">Light</button>
+  <button onclick="darkTheme()">Dark</button>
+  <button onclick="colorTheme()">Colorful</button>
   <script>
-  /* I dont know half of this script */ 
-  function myFunction(id, btnid) {
-    document.getElementById(id).classList.toggle("show");
-    document.getElementById(btnid).classList.toggle("setgray");
-  }
+    let root = document.documentElement;
 
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    function lightTheme() {
+      root.style.setProperty('--color', 'black');
+      root.style.setProperty('--bg-color', 'white');
     }
 
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-          var dot = document.getElementsByClassName("dot");
-          var i2;
-          for (i2 = 0; i2 < dot.length; i2++) {
-            var openDropdown = dot[i2];
-            if (openDropdown.classList.contains('setgray')) {
-              openDropdown.classList.remove('setgray');
-            }
-          }
-        }
-      }
+    function darkTheme() {
+      root.style.setProperty('--color', 'white');
+      root.style.setProperty('--bg-color', 'black');
     }
-  }
-  // Get the modal
-  var modal = document.getElementById("myModal");
-  
-  // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
-  
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  
-  // When the user clicks the button, open the modal 
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
 
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
+    function colorTheme() {
+      root.style.setProperty('--color', 'purple');
+      root.style.setProperty('--bg-color', 'pink');
+    }
   </script>
 </body>
 </html>

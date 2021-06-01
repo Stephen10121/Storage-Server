@@ -3,15 +3,15 @@ function ShowNotification(what) {
         body: what
     });
 }
-
 if (Notification.permission === 'granted') {
     //alert('notifications granted');
     ShowNotification("Your notifications are on.");
-//} else if (Notification.permission !== 'denied'){
-} else {
+    console.log('Notification sent');
+} else if (Notification.permission !== 'denied'){
     Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
             ShowNotification("Now your notifications are on.");
+            console.log('Notification sent');
         }
     });
 }
@@ -50,9 +50,6 @@ function save() {
         } else {
             response.json().then(function (data) {
                 alert(data['message']);
-                //var settings = data['settings'];
-                //encrypt = true;
-                console.log(settings);
             })
         }
     })

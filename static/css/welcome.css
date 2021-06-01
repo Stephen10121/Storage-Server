@@ -6,22 +6,32 @@
     box-sizing: border-box;
 }
 
+:root {
+  --bg-color: black;
+  --bg-color-2: white;
+  --bg-color-3: #f3f3f3;
+  --color: white;
+  --color-hover: gray;
+  --color-2: orange;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 100px auto;
 }
 
 .header {
-    background-color: black;
+    background-color: var(--bg-color);
     height: 100vh;
     bottom:0;
     width: 100px;
-    color: white;
+    color: var(--color);
 }
 
 .main {
   height: 100vh;
   overflow-y:auto;
+  background-color: var(--bg-color-2);
 }
 
 .icon-part {
@@ -32,36 +42,36 @@
 }
 
 .header-icon button{
-    color: white;
-    background-color: black;
+    color: var(--color);
+    background-color: var(--bg-color);
     border: none;
     padding-top: 10px;
 }
 
 .header-icon a{
-  color: white;
-  background-color: black;
+  color: var(--color);
+  background-color: var(--bg-color);
   border: none;
   padding-top: 30px;
 }
 
 .header-icon button:hover{
-    color: gray;
+    color: var(--color-hover);
     cursor: pointer;
 }
 
 .header-icon button:focus {
     outline: none;
-    color: gray;
+    color: var(--color-hover);
 }
 
 .header-icon a:hover{
-  color: gray;
+  color: var(--color-hover);
 }
 
 .header-icon a:focus {
   outline: none;
-  color: gray;
+  color: var(--color-hover);
 }
 
 .profile-part {
@@ -69,14 +79,14 @@
 }
 
 .profile-part button {
-    color: white;
-    background-color: black;
+    color: var(--color);
+    background-color: var(--bg-color);
     border: none;
 }
 
 .profile-part button:hover {color:gray;}
 .profile-part button:focus {
-    color:gray;
+    color: var(--color-hover);
     outline: none;
 }
 
@@ -90,7 +100,7 @@
 
 .add-file-show:hover {
   cursor: pointer;
-  color: gray;
+  color: var(--color-hover);
 }
 
 .foldername {
@@ -107,8 +117,8 @@
 }
 
 .back-location button {
-  color: black;
-  background-color: #f3f3f3;
+  color: var(--color-2);
+  background-color: var(--bg-color-3);
   border: none;
 }
 
@@ -117,7 +127,7 @@
 }
 
 .back-location button:hover {
-  color: gray;
+  color: var(--color-hover);
 }
 
 .main {
@@ -134,7 +144,7 @@
 .foldername {
     padding-top: 5px;
     padding-left: 5px;
-    background-color: #f3f3f3;
+    background-color: var(--bg-color-3);
 }
 
 .file-section {
@@ -142,7 +152,7 @@
 }
 
 .footer {
-    background-color: black;
+    background-color: var(--bg-color);
 }
 
 .footer ul {
@@ -154,8 +164,8 @@
 }
 
 .footer ul li a {
-    color: white;
-    background-color: black;
+    color: var(--color);
+    background-color: var(--bg-color);
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -251,7 +261,7 @@
   .dropdown-menu {
       display: none;
       position: absolute;
-      background-color: #f3f3f3;
+      background-color: var(--bg-color-3);
       outline: solid 1px black;
       width: 120px;
       text-align: center;
@@ -395,7 +405,7 @@
   .cdir-input input {
     border: none;
     outline: none;
-    background-color: #f3f3f3;
+    background-color: var(--bg-color-3);
     font-size: 15px;
   }
 
