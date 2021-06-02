@@ -7,7 +7,7 @@
 }
 
 
-/*Default color pallete*
+/* Light Mode */
 :root {
   --bg-color: black;
   --bg-color-2: white;
@@ -16,7 +16,9 @@
   --color-hover: gray;
   --color-2: black;
   --folder-color: #dfdfdf;
-}*/
+}
+
+/* Dark Mode
 :root {
   --bg-color: #424242;
   --bg-color-2: #5a5a5a;
@@ -26,6 +28,7 @@
   --color-2: rgb(175, 175, 175);
   --folder-color: #a7a7a7;
 }
+*/
 
 .grid {
     display: grid;
