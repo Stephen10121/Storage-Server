@@ -6,15 +6,29 @@
     box-sizing: border-box;
 }
 
+
+/*Default color pallete*/
 :root {
   --bg-color: black;
   --bg-color-2: white;
   --bg-color-3: #f3f3f3;
   --color: white;
   --color-hover: gray;
-  --color-2: orange;
+  --color-2: black;
+  --folder-color: #dfdfdf;
 }
 
+/*
+:root {
+  --bg-color: #424242;
+  --bg-color-2: #5a5a5a;
+  --bg-color-3: rgb(82, 9, 82);
+  --color: rgb(172, 172, 172);
+  --color-hover: white;
+  --color-2: rgb(175, 175, 175);
+  --folder-color: #a7a7a7;
+}
+*/
 .grid {
     display: grid;
     grid-template-columns: 100px auto;
@@ -39,6 +53,10 @@
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     margin-top: 40px;
+}
+
+#the-setting-icon {
+  transform: rotate(45 140 105);
 }
 
 .header-icon button{
@@ -105,6 +123,14 @@
 
 .foldername {
   display: flex;
+}
+
+.folder-link {
+  color: var(--color-2);
+}
+
+#go-home-link {
+  color: var(--color-2);
 }
 
 .folder-location {
@@ -180,7 +206,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: var(--folder-color);
     min-width: 150px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -209,8 +235,8 @@
     font-size: 15px;
   }
   
-  .dropdown form input:hover {background-color: #ddd;}
-  .dropdown button:hover {background-color: #ddd;}
+  .dropdown form input:hover {background-color:var(--folder-color);}
+  .dropdown button:hover {background-color: var(--folder-color);}
   
   .show {display: block;}
   
@@ -222,7 +248,7 @@
       padding-bottom: 5px;
       border: 2px black solid;
       border-radius: 10px;
-      background-color: #dfdfdf;
+      background-color: var(--folder-color);
       height: 50px;
       margin: 10px;
   }
@@ -230,14 +256,14 @@
   .folder-name-input {
       border: none;
       font-size: 15px;
-      background-color: #dfdfdf;
+      background-color: var(--folder-color);
       margin-top: 3px;
       margin-bottom: -3px;
       cursor: pointer;
   }
   
   .select-folder-button{
-      background-color: #dfdfdf;
+      background-color: var(--folder-color);
       border: none;
       border-radius: 25px;
       margin-top: 3px;
@@ -246,7 +272,7 @@
   
   .select-folder-button:hover {
       color: gray;
-      background-color: #dfdfdf;
+      background-color: var(--folder-color);
   }
   
   .setgray {
@@ -255,7 +281,7 @@
   
   .select-folder-button:focus {
       outline: none;
-      background-color: #dfdfdf;
+      background-color: var(--folder-color);
   }
   
   .dropdown-menu {
