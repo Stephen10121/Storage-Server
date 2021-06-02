@@ -60,13 +60,13 @@ var checkUi = document.getElementById('light-mode');
 checkUi.addEventListener('change', function() {
     let root = document.documentElement;
     if (this.checked) {
-        root.style.setProperty('--bg-color', '#424242');
-        root.style.setProperty('--bg-color-2', '#5a5a5a');
-        root.style.setProperty('--bg-color-3', 'rgb(82, 9, 82)');
-        root.style.setProperty('--color', 'rgb(172, 172, 172)');
-        root.style.setProperty('--color-hover', 'white');
-        root.style.setProperty('--color-2', 'rgb(175, 175, 175)');
-        root.style.setProperty('--folder-color', '#a7a7a7');
+        root.style.setProperty('--bg-color', 'rgb(45, 51, 59)');
+        root.style.setProperty('--bg-color-2', 'rgb(34, 39, 46)');
+        root.style.setProperty('--bg-color-3', 'rgb(100, 18, 100)');
+        root.style.setProperty('--color-hover', 'gray');
+        root.style.setProperty('--color-2', 'rgb(205, 217, 229)');
+        root.style.setProperty('--color', 'rgb(205, 217, 229)');
+        root.style.setProperty('--folder-color', 'rgb(205, 217, 229)');
     } else {
         root.style.setProperty('--bg-color', 'black');
         root.style.setProperty('--bg-color-2', 'white');

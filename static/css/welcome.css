@@ -22,7 +22,7 @@
 :root {
   --bg-color: #424242;
   --bg-color-2: #5a5a5a;
-  --bg-color-3: rgb(82, 9, 82);
+  --bg-color-3: rgb(100, 18, 100);
   --color: rgb(172, 172, 172);
   --color-hover: white;
   --color-2: rgb(175, 175, 175);
@@ -184,6 +184,7 @@
 
 .footer {
     background-color: var(--bg-color);
+    box-shadow: inset 2px 0 0 0 #232931;
 }
 
 .footer ul {
