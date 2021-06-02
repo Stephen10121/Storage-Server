@@ -7,7 +7,7 @@
 }
 
 
-/*Default color pallete*/
+/*Default color pallete*
 :root {
   --bg-color: black;
   --bg-color-2: white;
@@ -16,9 +16,7 @@
   --color-hover: gray;
   --color-2: black;
   --folder-color: #dfdfdf;
-}
-
-/*
+}*/
 :root {
   --bg-color: #424242;
   --bg-color-2: #5a5a5a;
@@ -28,7 +26,7 @@
   --color-2: rgb(175, 175, 175);
   --folder-color: #a7a7a7;
 }
-*/
+
 .grid {
     display: grid;
     grid-template-columns: 100px auto;
@@ -448,7 +446,7 @@
   padding: 10px;
   border: 2px black solid;
   border-radius: 10px;
-  background-color: #dfdfdf;
+  background-color: var(--folder-color);
   height: 50px;
   margin: 10px;
 }
@@ -456,7 +454,7 @@
 .file-name-button {
   border: none;
   outline: none;
-  background-color: #dfdfdf;
+  background-color: var(--folder-color);
   margin-top: 4px;
 }
 
@@ -508,11 +506,11 @@
   font-size: 15px;
 }
 
-.fdropdown form input:hover {background-color: #ddd;}
-.fdropdown button:hover {background-color: #ddd;}
+.fdropdown form input:hover {background-color: var(--folder-color);}
+.fdropdown button:hover {background-color: var(--folder-color);}
 
 .select-file-button{
-  background-color: #dfdfdf;
+  background-color: var(--folder-color);
   border: none;
   border-radius: 25px;
   margin-top: 3px;
@@ -520,13 +518,13 @@
 }
 
 .select-file-button:hover {
-  color: gray;
-  background-color: #dfdfdf;
+  color: white;
+  background-color: var(--folder-color);
 }
 
 .select-file-button:focus {
   outline: none;
-  background-color: #dfdfdf;
+  background-color: var(--folder-color);
 }
 
 .hide {
