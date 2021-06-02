@@ -31,9 +31,19 @@ Settings
         </label>
     </div>
     <div class="light-mode set-node">
-        <p>Light/Dark Mode.</p>
+        <p>Dark Mode.</p>
         <label class="switch">
             {% if  settings[2]==1 %}
+                <script>
+                    let root = document.documentElement;
+                    root.style.setProperty('--bg-color', '#424242');
+                    root.style.setProperty('--bg-color-2', '#5a5a5a');
+                    root.style.setProperty('--bg-color-3', 'rgb(82, 9, 82)');
+                    root.style.setProperty('--color', 'rgb(172, 172, 172)');
+                    root.style.setProperty('--color-hover', 'white');
+                    root.style.setProperty('--color-2', 'rgb(175, 175, 175)');
+                    root.style.setProperty('--folder-color', '#a7a7a7');
+                </script>
                 <input id='light-mode' type="checkbox" checked>
             {% else %}
                 <input id='light-mode' type="checkbox">

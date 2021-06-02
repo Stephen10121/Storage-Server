@@ -40,15 +40,11 @@
 }
 
 input:checked:hover +.slider {
-    background: #e44ed2;
-    background: -webkit-linear-gradient(to right, #e44ed2, #a9e9e8);
-    background: linear-gradient(to right, #e44ed2, #a9e9e8);
+    background-color: #1ab32e;
 }
 
 input:checked + .slider {
-    background: #ef32d9;
-    background: -webkit-linear-gradient(to right, #ef32d9, #89fffd);
-    background: linear-gradient(to right, #ef32d9, #89fffd);
+    background-color: #1fda38;
 }
 
 input:focus + .slider {

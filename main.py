@@ -87,6 +87,7 @@ def home():
             return render_template("index.html", what=[False, True, False])
         else:
             id = int(E.decrypt(request.cookies['WOWPOW'])[1])
+            setting = F.get_settings(id)[2:]
             dirpath = 'root'
             if request.method == 'POST':
                 if request.form.get('delete_file'):
@@ -99,21 +100,21 @@ def home():
                             fin+='/'+i
                         path=fin[1:]
                     if F.del_file(delete, id)==True:
-                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                     else:
-                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 if request.form.get('add-file-path'):
                     path = request.form.get('add-file-path')
                     add_file = request.files['add-file']
                     seeif = F.add_file(id, path, add_file)
                     if seeif==True:
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="Success!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                     elif seeif==False:
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="No file was selected!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], error="No file was selected!", folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                 elif request.form.get('file-menu'):
                     file_menu = request.form.get('file-menu')
                     file_menu_path = request.form.get('file-menu-path')
-                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, file_menu_path), path=file_menu_path, files=F.get_files(id, file_menu_path), showfilemenu=file_menu)
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, file_menu_path), path=file_menu_path, files=F.get_files(id, file_menu_path), showfilemenu=file_menu, settings=setting)
                 elif request.form.get('cdir'):
                     cdir = request.form.get('cdir')[::-1][1:][::-1]
                     cdirpath = request.form.get('cdirpath')
@@ -129,100 +130,100 @@ def home():
                                     newpath+=i+'/'
                         newpath=newpath[::-1][1:][::-1]
                     else:
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, cdirpath), path=cdirpath, files=F.get_files(id, cdirpath))
-                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, newpath), path=newpath, files=F.get_files(id, newpath))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, cdirpath), path=cdirpath, files=F.get_files(id, cdirpath), settings=setting)
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, newpath), path=newpath, files=F.get_files(id, newpath), settings=setting)
                 elif request.form.get('createfolderpath'):
                     path = request.form.get('createfolderpath')
                     fname = request.form.get('foldername')
                     create_folder = F.create_folder(id, path, fname)
                     if create_folder==True:
-                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                     elif create_folder=='folder_exist':
-                        return render_template("welcome.html",error="That folder already exists!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html",error="That folder already exists!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                     else:
-                        return render_template("welcome.html",error="ERROR" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                        return render_template("welcome.html",error="ERROR" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                 elif request.form.get('goback'):
                     npath = request.form.get('goback').split('/')[::-1][1:][::-1]
                     path=''
                     for i in npath:
                         path+='/'+i
                     path = path[1:] if path!='' else 'root'
-                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path))
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, path), path=path, files=F.get_files(id, path), settings=setting)
                 elif request.form.get("moveto"):
                     moveto = request.form.get('moveto')
                     movewhat = request.form.get('movepath')
                     moveit = F.move_dir(id, movewhat, moveto)
                     if moveit=='cant_move_past_root':
-                        return render_template("welcome.html", error="You can't move directory past your root folder.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="You can't move directory past your root folder.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif moveit=='move_place_none':
-                        return render_template("welcome.html", error="The place you're moving the folder to doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="The place you're moving the folder to doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif moveit=='error_3':
-                        return render_template("welcome.html", error="error_3", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="error_3", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif moveit=='error_4':
-                        return render_template("welcome.html", error="error_4", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="error_4", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     else:
-                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="Success!", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('cancel'):
-                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                    return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('movefolder'):
                     what = request.form.get('movefolder')
                     if '/' in what:
                         what2=what.split('/')
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[what, what2[::-1][0]], files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[what, what2[::-1][0]], files=F.get_files(id, dirpath), settings=setting)
                     else:
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[False, what], files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, movefolder=[False, what], files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('trashwhat'):
                     what=request.form.get('trashwhat')
                     trash_it = F.trash_folder(id, what)
                     if trash_it==True:
-                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif trash_it=='user_not_exists':
-                        return render_template("welcome.html", error='error_2', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='error_2', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('dirpath'):
                     nowpath = request.form.get('dirpath')
                     newpath = request.form.get('chdir')
                     if nowpath=='root':
                         dirpath=''
                         dirpath+=newpath
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     else:
                         nowpath+='/'+newpath
                         dirpath=nowpath
-                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('sharewhat'):
                     what = request.form.get('sharewhat')
                     towho = request.form.get('sendto')
                     if F.user_exists(towho)==True:
                         what = F.share_folder(id, what, F.get_id(towho))
                         if what=='user_has_dir':
-                            return render_template("welcome.html", error='That user has a folder named the same as the one your sharing' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                            return render_template("welcome.html", error='That user has a folder named the same as the one your sharing' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                         elif what==True:
-                            return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                            return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                         elif what=='share_user_not_exists':
-                            return render_template("welcome.html", error="User doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                            return render_template("welcome.html", error="User doesn't exist.", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                         else:
-                            return render_template("welcome.html", error='error_1' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                            return render_template("welcome.html", error='error_1' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     else:
-                        return render_template("welcome.html", error="User doesn't exist!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="User doesn't exist!" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('rename'):
                     renamewhat=request.form.get('rename')
                     path=request.form.get('renamepath')
                     rename_result = F.rename_folder(path, renamewhat, id)
                     if rename_result==False:
-                        return render_template("welcome.html", error='folder_rename_error' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='folder_rename_error' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif rename_result=='rndirexists':
-                        return render_template("welcome.html", error='folder_rename_exists' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='folder_rename_exists' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     elif rename_result=='spacebar':
-                        return render_template("welcome.html", error='folder_rename_spacebar' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='folder_rename_spacebar' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     else:
-                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='Success', what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                 elif request.form.get('delete_folder'):
                     delete = request.form.get('delete_folder')
                     if F.del_folder(delete, id)==True:
-                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error='Folder Deleted' ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
                     else:
-                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
-            return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath))
+                        return render_template("welcome.html", error="Folder didn't delete" ,what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
+            return render_template("welcome.html", what=[True, True, F.get_userinfo(id)], folders=F.get_folders(id, dirpath), path=dirpath, files=F.get_files(id, dirpath), settings=setting)
     else:
         return render_template("index.html", what=[False, True, False])
 

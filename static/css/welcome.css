@@ -60,6 +60,10 @@
   transform: rotate(45 140 105);
 }
 
+.set-node p {
+  color: var(--color-2);
+}
+
 .header-icon button{
     color: var(--color);
     background-color: var(--bg-color);
