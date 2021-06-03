@@ -234,13 +234,17 @@ def share_page():
             return redirect('/')
         else:
             id=int(E.decrypt(request.cookies['WOWPOW'])[1])
-            is_id = F.is_id(id)
-            if is_id != None:
-                return render_template("shared.html", what=[True, True, F.get_userinfo(id)], folders=F.get_shared_folders(id))
+            setting = F.get_settings(id)[2:]
+            if setting[0]==0:
+                return redirect('/')
             else:
-                res=make_response(redirect('/'))
-                res.set_cookie('WOWPOW', '')
-                return res
+                is_id = F.is_id(id)
+                if is_id != None:
+                    return render_template("shared.html", what=[True, True, F.get_userinfo(id)], folders=F.get_shared_folders(id))
+                else:
+                    res=make_response(redirect('/'))
+                    res.set_cookie('WOWPOW', '')
+                    return res
     else:
         return redirect('/')
 
@@ -269,6 +273,10 @@ def signup_form():
         password = request.form.get('password')
         rpassword = request.form.get('rpassword')
         email= request.form.get('email')
+        nallowed = [' ', '/']
+        for i in nallowed:
+            if i in username:
+                return render_template('signup.html', error='forbidchar', what=[True, False])
         jeff = F.signup(username, password, rpassword, name, email)
         if jeff=='userexists':
             return render_template('signup.html', error='userexists', what=[True, False])

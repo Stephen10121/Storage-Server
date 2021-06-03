@@ -6,6 +6,8 @@
     <strong>Error</strong>
     {% if error=='userexists' %}
         User Exists!
+    {% elif error=='forbidchar' %}
+        You can't have " " or "/" in your username.
     {% elif error=='passwordnotmatch' %}
         Passwords don't match!
     {% endif %}

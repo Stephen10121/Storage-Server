@@ -48,7 +48,8 @@ pref (
 cursor.execute(comm)
 
 def add_def_pref(id):
-    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt, pref_auth) VALUES ("+str(id)+", 1, 0, 0, 0, 0, 0, 0, 0)")
+    print(id)
+    cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt, pref_auth) VALUES ("+str(id[0])+", 1, 1, 0, 0, 0, 0, 0, 0)")
     conn.commit()
 
 def add_def_stock():
@@ -90,7 +91,7 @@ def add_def_user(user_name, user_rname , user_email):
         user_password = hashlib.sha224(user_password.encode()).hexdigest()
         cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
         conn.commit()
-        add_def_pref(1)
+        add_def_pref((1,))
 
 def get_userinfo(id):
     get=cursor.execute("SELECT id, user_name, user_rname, user_email FROM users WHERE id=%s"%(id))

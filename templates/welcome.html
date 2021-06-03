@@ -64,6 +64,7 @@
                             </button>
                         </center>
                     </div>
+                    {% if settings[0]==1 %}
                     <div class="shared-icon header-icon">
                         <center>
                             <a href='./shared' title="Shared With Me">
@@ -75,6 +76,7 @@
                             </a>
                         </center>
                     </div>
+                    {% endif %}
                     <div class="trash-icon header-icon">
                         <center>
                             <a href="/trash" title='Trash'>
@@ -215,7 +217,9 @@
                                                 {% endif %}
                                                 <input type="submit" value="Trash">
                                             </form>
-                                            <button onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
+                                            {% if settings[0]==1 %}
+                                                <button onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
+                                            {% endif %}
                                             <button onclick="showRename('{{e}}')" id="myBtn">Rename</button>
                                             <form method="POST">
                                                 {% if path=='root' %}
@@ -323,7 +327,9 @@
                                             {% endif %}
                                             <input type="submit" value="Trash">
                                         </form>
-                                        <button style="float:left;" onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
+                                        {% if settings[0]==1 %}
+                                            <button style="float:left;" onclick="showShare('{{f}}')" id='shareBtn'>Share</button>
+                                        {% endif %}
                                         <button style="float:left;" onclick="showRename('{{e}}')" id="myBtn">Rename</button>
                                         <form method="POST">
                                             {% if path=='root' %}

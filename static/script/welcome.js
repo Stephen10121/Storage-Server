@@ -77,3 +77,14 @@ checkUi.addEventListener('change', function() {
         root.style.setProperty('--folder-color', '#dfdfdf');
     }
 });
+
+var check2auth = document.getElementById('2auth');
+check2auth.addEventListener('change', function() {
+    if (this.checked) {
+        document.getElementById('show2step').style.display = 'block';
+        console.log('show');
+    } else {
+        document.getElementById('show2step').style.display = 'none';  
+        console.log('hide'); 
+    }
+});

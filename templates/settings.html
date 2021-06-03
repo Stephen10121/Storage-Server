@@ -106,6 +106,16 @@ Settings
             <span class="slider round"></span>
         </label>
     </div>
+    <div class="2stepauth set-node" id="show2step">
+        <input type="password" id='twopass' placeholder="Second Password">
+    </div>
+    {% if settings[7]==0 %}
+        <style>
+            #show2step {
+                display: none;
+            }
+        </style>
+    {% endif %}
     <div class="save">
         <button onclick="save()">
             Save Settings
