@@ -112,6 +112,11 @@ def get_id(user_name):
     for i in get:
         return i
 
+def get_2auth(id):
+    get=cursor.execute("SELECT user_2password FROM users WHERE id='%s'"%(id))
+    for i in get:
+        return i
+
 def signup(u,p,rp,name,email):
     if user_exists(u)!=True:
         if p==rp:

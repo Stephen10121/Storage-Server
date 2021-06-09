@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} 
+{% block content %}
+{% if error %}
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong>Error</strong>
+    {% if error=='usernotexist' %}
+        User doesnt exist!
+    {% elif error=='wrongpassword' %}
+        Incorrect password
+    {% endif %}
+  </div>
+{% endif %}
+<center>
+    <form method="post" id='login-form'>
+        <label for="password">Second Password</label><br>
+        <input type="hidden" name="username" class='input' value="{{info[0]}}">
+        <input type="hidden" name="password" class='input' value="{{info[1]}}">
+        <input type="password" name='sec-password' id='password' class='input'/><br>
+        <input type="submit" value="Submit">
+    </form>
+</center>
+{% endblock %}

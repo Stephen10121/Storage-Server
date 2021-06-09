@@ -293,18 +293,24 @@ def signup_form():
 @app.route('/login', methods=['GET', 'POST'])
 def login_form():
     if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        info = F.login(username, password)
-        if info=='usernotexist':
-            return render_template('login.html', error='usernotexist', what=[True, False])
-        elif info=='wrongpassword':
+        if request.form.get('sec-password'):
             return render_template('login.html', error='wrongpassword', what=[True, False])
         else:
-            user_id = F.get_id(username)[0]
-            res=make_response(redirect('/'))
-            res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
-            return res
+            username = request.form.get('username')
+            password = request.form.get('password')
+            info = F.login(username, password)
+            if info=='usernotexist':
+                return render_template('login.html', error='usernotexist', what=[True, False])
+            elif info=='wrongpassword':
+                return render_template('login.html', error='wrongpassword', what=[True, False])
+            else:
+                user_id = F.get_id(username)[0]
+                if F.get_2auth(user_id)[0]=="None":
+                    res=make_response(redirect('/'))
+                    res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
+                    return res
+                else:
+                    return render_template('2auth.html', info=[username, password], what=[True, False])
     else:
         return render_template("login.html", what=[True, False])
 
