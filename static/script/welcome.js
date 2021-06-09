@@ -25,6 +25,8 @@ function save() {
     var trash = document.getElementById('trash-set').checked;
     var encrypt = document.getElementById('encryption').checked;
     var auth = document.getElementById('2auth').checked;
+    var twoauth = document.getElementById('twopass').value;
+    console.log(twoauth);
     var entry = {
         Eshare: share,
         Eaccount: account,

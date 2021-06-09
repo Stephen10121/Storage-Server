@@ -74,7 +74,6 @@ def settings():
                 return res
             else:
                 setting = F.get_settings(id)[2:]
-                print(type(setting[0]))
                 res = make_response(jsonify({'message':'Settings changed!', 'settings': F.get_settings(id)[2:]}), 200)
                 return res
         else:
