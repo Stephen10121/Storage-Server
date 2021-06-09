@@ -16,6 +16,7 @@ users(
     user_name TEXT,
     user_rname TEXT,
     user_password TEXT,
+    user_2password TEXT,
     user_email TEXT
 )"""
 cursor.execute(comm)
@@ -62,7 +63,7 @@ def get_stock(owner_id):
         print(i)
     
 def add_user(user_name, user_rname ,user_password, user_email):
-    cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
+    cursor.execute("INSERT INTO users (user_name, user_rname, user_password, user_2password, user_email) VALUES ('"+user_name+"', '"+user_rname+"', '"+user_password+"', 'None','"+user_email+"')")
     conn.commit()
 
 def user_exists(user_name):
@@ -89,7 +90,7 @@ def add_def_user(user_name, user_rname , user_email):
                 exit()
         user_password = get_pass()
         user_password = hashlib.sha224(user_password.encode()).hexdigest()
-        cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', '"+user_email+"')")
+        cursor.execute("INSERT INTO users (id, user_name, user_rname, user_password, user_2password, user_email) VALUES (1,'"+user_name+"', '"+user_rname+"', '"+user_password+"', 'None', '"+user_email+"')")
         conn.commit()
         add_def_pref((1,))
 
