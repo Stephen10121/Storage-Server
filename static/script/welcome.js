@@ -26,7 +26,11 @@ function save() {
     var encrypt = document.getElementById('encryption').checked;
     var auth = document.getElementById('2auth').checked;
     var twoauth = document.getElementById('twopass').value;
-    console.log(twoauth);
+    if (twoauth !== '') {
+        console.log(twoauth);
+    } else {
+        console.log('Empty Password');
+    }
     var entry = {
         Eshare: share,
         Eaccount: account,
@@ -35,7 +39,8 @@ function save() {
         Enotify: notify,
         Etrash: trash,
         Eencrypt: encrypt,
-        Eauth: auth
+        Eauth: auth,
+        E2auth: twoauth
     };
     
     fetch(`${window.origin}/settings`, {

@@ -67,7 +67,8 @@ def settings():
                 'notify': req['Enotify'],
                 'trash': req['Etrash'],
                 'encrypt': req['Eencrypt'],
-                'auth': req['Eauth']
+                'auth': req['Eauth'],
+                '2auth': req['E2auth']
             }
             if F.save_settings(id, upref) != True:
                 res = make_response(jsonify({'message':'Error!'}), 200)

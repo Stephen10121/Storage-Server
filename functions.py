@@ -48,6 +48,9 @@ pref (
 
 cursor.execute(comm)
 
+def change_2pass(id, pass2):
+    cursor.execute("UPDATE users SET user_2password='"+pass2+"' WHERE id="+str(id)+";")
+
 def add_def_pref(id):
     print(id)
     cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt, pref_auth) VALUES ("+str(id[0])+", 1, 1, 0, 0, 0, 0, 0, 0)")
@@ -95,7 +98,7 @@ def add_def_user(user_name, user_rname , user_email):
         add_def_pref((1,))
 
 def get_userinfo(id):
-    get=cursor.execute("SELECT id, user_name, user_rname, user_email FROM users WHERE id=%s"%(id))
+    get=cursor.execute("SELECT id, user_name, user_rname, user_2password, user_email FROM users WHERE id=%s"%(id))
     for i in get:
         return i
 
@@ -545,9 +548,12 @@ def save_settings(id, setting):
     if is_id(id)==False:
         return False
     else:
+        if setting['2auth']!='':
+            change_2pass(id, setting['2auth'])
         comm = "UPDATE pref SET pref_share = "+str(setting['share'])+", pref_account = "+str(setting['account'])+", pref_lightmode = "+str(setting['lightmode'])+", pref_stocks = "+str(setting['stocks'])+", pref_notify = "+str(setting['notify'])+", pref_trash = "+str(setting['trash'])+", pref_encrypt = "+str(setting['encrypt'])+", pref_auth = "+str(setting['auth'])+" WHERE pref_owner="+str(id)+";"
         cursor.execute(comm)
         conn.commit()
+        print(get_userinfo(id))
         return True
 
 def get_settings(id):
