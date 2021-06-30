@@ -306,12 +306,12 @@ def login_form():
                 return render_template('login.html', error='wrongpassword', what=[True, False])
             else:
                 user_id = F.get_id(username)[0]
-                if F.get_2auth(user_id)[0]=="None":
-                    res=make_response(redirect('/'))
-                    res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
-                    return res
-                else:
-                    return render_template('2auth.html', info=[username, password], what=[True, False])
+                #if F.get_2auth(user_id)[0]=="None":
+                res=make_response(redirect('/'))
+                res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
+                return res
+                #else:
+                #    return render_template('2auth.html', info=[username, password], what=[True, False])
     else:
         return render_template("login.html", what=[True, False])
 
