@@ -1,4 +1,5 @@
 If any errors are encountered, this is the file with possible explanations.
+***Some errors may not work or have changed.***
 
 Error #1: An error when sharing a folder.
   Reasons:
