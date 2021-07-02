@@ -106,8 +106,15 @@ Settings
             <span class="slider round"></span>
         </label>
     </div>
+    <script>
+        function change_pass() {
+            document.getElementById('twopass').style.display = 'block';
+            document.getElementById('changePassButton').style.display = 'none';
+        }
+    </script>
     <div class="2stepauth set-node" id="show2step">
         <center>
+            <button onclick="change_pass()" id='changePassButton'>Change Password</button>
             <input type="password" id='twopass' placeholder="Second Password">
         </center>
     </div>
@@ -115,6 +122,18 @@ Settings
         <style>
             #show2step {
                 display: none;
+            }
+            #changePassButton {
+                display: none;
+            }
+        </style>
+    {% else %}
+        <style>
+            #twopass {
+                display: none;
+            }
+            #changePassButton {
+                display: block;
             }
         </style>
     {% endif %}

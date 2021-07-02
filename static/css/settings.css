@@ -36,7 +36,7 @@
     width: 100px;
     height: 50px;
     border: 1px black solid;
-    background-color: #dfdfdf;
+    background-color: var(--folder-color);
     border-radius: 5px;
 }
 
@@ -58,4 +58,16 @@
 
 #twopass:focus {
     outline: none;
+}
+
+#changePassButton {
+    padding: 5px;
+    border: none;
+    background-color: var(--folder-color);
+    outline: none;
+    margin-top: 10px;
+}
+
+#changePassButton:hover {
+    cursor: pointer;
 }

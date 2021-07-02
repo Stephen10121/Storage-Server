@@ -50,7 +50,7 @@ cursor.execute(comm)
 
 def change_2pass(id, pass2):
     e_pass2 = hashlib.sha224(pass2.encode()).hexdigest()
-    cursor.execute("UPDATE users SET user_2password='"+e_pass2+"' WHERE id="+str(id[0])+";")
+    cursor.execute("UPDATE users SET user_2password='"+str(e_pass2)+"' WHERE id="+str(id)+";")
     conn.commit()
 
 def add_def_pref(id):
