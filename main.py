@@ -306,14 +306,46 @@ def login_form():
                 return render_template('login.html', error='wrongpassword', what=[True, False])
             else:
                 user_id = F.get_id(username)[0]
-                #if F.get_2auth(user_id)[0]=="None":
-                res=make_response(redirect('/'))
-                res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
-                return res
-                #else:
-                #    return render_template('2auth.html', info=[username, password], what=[True, False])
+                if F.get_2auth(user_id)[0]=="None":
+                    res=make_response(redirect('/'))
+                    res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
+                    return res
+                else:
+                    return render_template('2auth.html', info=[username, password], what=[True, False])
     else:
         return render_template("login.html", what=[True, False])
+
+@app.route('/login2', methods=['POST'])
+def login2_form():
+    if request.method == 'POST':
+        if request.form.get('sec-password'):
+            username = request.form.get('username')
+            password = request.form.get('password')
+            sec_password = request.form.get('sec-password')
+            info = F.login(username, password)
+            if info=='usernotexist':
+                return render_template('login.html', error='usernotexist', what=[True, False])
+            elif info=='wrongpassword':
+                return render_template('login.html', error='wrongpassword', what=[True, False])
+            else:
+                user_id = F.get_id(username)[0]
+                if F.get_2auth(user_id)[0]=="None":
+                    res=make_response(redirect('/'))
+                    res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
+                    return res
+                else:
+                    id = F.get_id(username)
+                    pass2_encrypt = hashlib.sha224(sec_password.encode()).hexdigest()
+                    if F.get_2auth(user_id)[0]==pass2_encrypt:
+                        res=make_response(redirect('/'))
+                        res.set_cookie('WOWPOW', E.encrypt(str(F.get_id(username))))
+                        return res
+                    else:
+                        return redirect('/')
+        else:
+            return redirect('/')
+    else:
+        return redirect('/')
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():

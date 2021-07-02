@@ -8,6 +8,8 @@
         User doesnt exist!
     {% elif error=='wrongpassword' %}
         Incorrect password
+    {% else %}
+        {{error}}
     {% endif %}
   </div>
 {% endif %}
