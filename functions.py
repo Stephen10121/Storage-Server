@@ -53,6 +53,11 @@ def change_2pass(id, pass2):
     cursor.execute("UPDATE users SET user_2password='"+str(e_pass2)+"' WHERE id="+str(id)+";")
     conn.commit()
 
+def res_2pass(id):
+    e_pass2 = 'None'
+    cursor.execute("UPDATE users SET user_2password='"+str(e_pass2)+"' WHERE id="+str(id)+";")
+    conn.commit()
+
 def add_def_pref(id):
     print(id)
     cursor.execute("INSERT INTO pref (pref_owner, pref_share, pref_account, pref_lightmode, pref_stocks, pref_notify, pref_trash, pref_encrypt, pref_auth) VALUES ("+str(id[0])+", 1, 1, 0, 0, 0, 0, 0, 0)")

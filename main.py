@@ -70,6 +70,8 @@ def settings():
                 'auth': req['Eauth'],
                 '2auth': req['E2auth']
             }
+            if upref['auth']==False:
+                F.res_2pass(id)
             if F.save_settings(id, upref) != True:
                 res = make_response(jsonify({'message':'Error!'}), 200)
                 return res
