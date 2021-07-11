@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    {% block links %}{% endblock %}
   </head>
   <body>
       <div class="grid">
@@ -19,7 +20,7 @@
                 <div class="header-right">
                   <ul class="links">
                         <li><a class='style-link' href="#">About</a></li>
-                        <li><a class='style-link' href="#">Services</a></li>
+                        <li><a class='style-link' href="/services">Services</a></li>
                         <li><a class='style-link' href="#">Contact</a></li>
                         {% if what[0]==True %}
                           {% if what[1]==True %}

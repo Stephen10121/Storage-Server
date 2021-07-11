@@ -355,4 +355,12 @@ def logout():
     res.set_cookie('WOWPOW','')
     return res
 
+@app.route('/services')
+def services():
+    return render_template('service.html', what=[False, True, False])
+
+@app.route('/arduino', methods=['POST', 'GET'])
+def arduino():
+    return render_template('arduino.html')
+
 app.run(host='0.0.0.0', port=80, debug=True)

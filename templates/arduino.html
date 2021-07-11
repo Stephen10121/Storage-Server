@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Control Pad</title>
+    <link rel="stylesheet" href="../static/css/arduino.css">
+    <link rel="shortcut icon" href="../static/img/icon.png" type="image/x-icon">
+</head>
+<body>
+    <div class="button-grid">
+        <button id='1' onclick="lightChange('1')">Light 1 On</button>
+        <button id='2' onclick="lightChange('2')">Light 2 On</button>
+        <button id='3' onclick="lightChange('3')">Light 3 On</button>
+        <button id='4' onclick="lightChange('4')">Light 4 On</button>
+        <button id='5' onclick="lightChange('5')">Light 5 On</button>
+        <button id='6' onclick="lightChange('6')">Light 6 On</button>
+        <button id='7' onclick="lightChange('7')">Light 7 On</button>
+        <button id='8' onclick="lightChange('8')">Light 8 On</button>
+    </div>
+    <script>
+        function lightChange(what) {
+            if(document.getElementById(what).innerHTML.indexOf("On") !== -1){
+                document.getElementById(what).innerHTML = 'Light '+what+' Off';
+            } else {
+                document.getElementById(what).innerHTML = 'Light '+what+' On';
+            }
+            
+        }
+    </script>
+</body>
+</html>
