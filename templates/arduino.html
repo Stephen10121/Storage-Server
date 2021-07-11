@@ -22,10 +22,54 @@
     <script>
         function lightChange(what) {
             if(document.getElementById(what).innerHTML.indexOf("On") !== -1){
+                entry = {
+                    light: what,
+                    pos: '1'
+                };
+                fetch(`${window.origin}/arduino`, {
+                    method: "POST",
+                    credentials: "include",
+                    body: JSON.stringify(entry),
+                    cache: "no-cache",
+                    headers: new Headers({
+                        "content-type": "application/json"
+                    })
+                }).then(function(response) {
+                    if (response.status !== 200) {
+                        alert('Error');
+                    } else {
+                        response.json().then(function (data) {
+                            alert(data['message']);
+                        })
+                    }
+                })
                 document.getElementById(what).innerHTML = 'Light '+what+' Off';
             } else {
                 document.getElementById(what).innerHTML = 'Light '+what+' On';
+                entry = {
+                    light: what,
+                    pos: '0'
+                };
+                fetch(`${window.origin}/arduino`, {
+                    method: "POST",
+                    credentials: "include",
+                    body: JSON.stringify(entry),
+                    cache: "no-cache",
+                    headers: new Headers({
+                        "content-type": "application/json"
+                    })
+                }).then(function(response) {
+                    if (response.status !== 200) {
+                        alert('Error');
+                    } else {
+                        response.json().then(function (data) {
+                            alert(data['message']);
+                        })
+                    }
+                })
             }
+
+            
             
         }
     </script>

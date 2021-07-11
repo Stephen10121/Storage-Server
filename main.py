@@ -361,6 +361,19 @@ def services():
 
 @app.route('/arduino', methods=['POST', 'GET'])
 def arduino():
-    return render_template('arduino.html')
+    if request.method == 'POST':
+            req = request.get_json()
+            upref = {
+                'light': req['light'],
+                'pos': req['pos'],
+            }
+            print(upref['light'], upref['pos'])
+            if upref['pos']=='1':
+                res = make_response(jsonify({'message':'Light turned On.'}), 200)
+            else:
+                res = make_response(jsonify({'message':'Light turned Off.'}), 200)
+            return res
+    else:
+        return render_template('arduino.html')
 
 app.run(host='0.0.0.0', port=80, debug=True)
