@@ -36,10 +36,10 @@
                     })
                 }).then(function(response) {
                     if (response.status !== 200) {
-                        alert('Error');
+                        console.log('Error');
                     } else {
                         response.json().then(function (data) {
-                            alert(data['message']);
+                            console.log(data['message']);
                         })
                     }
                 })
@@ -60,7 +60,7 @@
                     })
                 }).then(function(response) {
                     if (response.status !== 200) {
-                        alert('Error');
+                        console.log('Error');
                     } else {
                         response.json().then(function (data) {
                             console.log(data['message']);
