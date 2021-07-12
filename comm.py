@@ -8,4 +8,3 @@ ser.flush()
 def send_comm(comm):
 	ser.write(comm.encode())
 	line = ser.readline().decode('utf-8').rstrip()
-	print(line)

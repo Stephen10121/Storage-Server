@@ -369,7 +369,6 @@ def arduino():
                 'pos': req['pos'],
             }
             send_comm(upref['light']+upref['pos'])
-            print(upref['light'], upref['pos'])
             if upref['pos']=='1':
                 res = make_response(jsonify({'message':'Light turned On.'}), 200)
             else:
