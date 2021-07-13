@@ -2,3 +2,26 @@
     margin: 0;
     padding: 0;
 }
+
+.button-grid {
+    display: grid;
+    grid-template-rows: 70px 70px 70px 70px;
+    margin-left: 45%;
+}
+
+.button-grid div {
+    display: grid;
+    grid-template-columns: 100px 100px;
+}
+
+button {
+    height: 90%;
+    width: 90%;
+    background-color: #dfdfdf;
+    border: none;
+}
+
+button:hover {
+    background-color: #c2c2c2;
+    cursor: pointer;
+}

@@ -2,7 +2,7 @@ from cryptography.fernet import Fernet
 import os
 from flask.helpers import send_file
 import hashlib
-from comm import send_comm
+#from comm import send_comm
 
 def user_stuff_exists():
     isdir = os.path.isdir('user_stuff') 
@@ -368,7 +368,7 @@ def arduino():
                 'light': req['light'],
                 'pos': req['pos'],
             }
-            send_comm(upref['light']+upref['pos'])
+            #send_comm(upref['light']+upref['pos'])
             if upref['pos']=='1':
                 res = make_response(jsonify({'message':'Light turned On.'}), 200)
             else:
