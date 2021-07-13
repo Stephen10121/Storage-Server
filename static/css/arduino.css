@@ -5,18 +5,13 @@
 
 .button-grid {
     display: grid;
-    grid-template-rows: 70px 70px 70px 70px;
-    margin-left: 45%;
-}
-
-.button-grid div {
-    display: grid;
-    grid-template-columns: 100px 100px;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr) ) ;
 }
 
 button {
-    height: 90%;
-    width: 90%;
+    /*height: 90%;
+    width: 90%;*/
     background-color: #dfdfdf;
     border: none;
 }
