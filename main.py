@@ -2,7 +2,9 @@ from cryptography.fernet import Fernet
 import os
 from flask.helpers import send_file
 import hashlib
-from comm import send_comm
+supported = 0
+if supported == 1:
+    from comm import send_comm
 
 def user_stuff_exists():
     isdir = os.path.isdir('user_stuff') 
@@ -23,6 +25,10 @@ from flask import Flask, render_template, request, make_response, redirect, url_
 app = Flask('app')
 
 F.add_def_user('test', 'test', 'test')
+
+@app.route("/levi")
+def levi():
+    return render_template('levi.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -368,7 +374,8 @@ def arduino():
                 'light': req['light'],
                 'pos': req['pos'],
             }
-            send_comm(upref['light']+upref['pos'])
+            if supported == 1:
+                send_comm(upref['light']+upref['pos'])
             if upref['pos']=='1':
                 res = make_response(jsonify({'message':'Light turned On.'}), 200)
             else:
