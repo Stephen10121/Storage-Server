@@ -9,6 +9,7 @@
 
 /* Light Mode */
 :root {
+  --main-width: 1268px;
   --bg-color: black;
   --bg-color-2: white;
   --bg-color-3: #f3f3f3;
@@ -44,6 +45,7 @@
 }
 
 .main {
+  width: var(--main-width);
   height: 100vh;
   overflow-y:auto;
   background-color: var(--bg-color-2);
