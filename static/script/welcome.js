@@ -6,7 +6,7 @@ console.log(screen.width-width);
 document.getElementById("main-class").style.width = screen.width-width;
 document.getElementById("footer-part").style.width = screen.width-width;
 document.getElementById("menu-part").style.width = screen.width-width-20;
-root.style.setProperty('--main-width', screen.width-width-20+'px');
+root.style.setProperty('--main-width', screen.width-width+'px');
 let myElements = document.querySelectorAll(".main");
 for (let i = 0; i < myElements.length; i++) {
 	myElements[i].style.width = screen.width-width;
@@ -81,7 +81,7 @@ var checkUi = document.getElementById('light-mode');
 checkUi.addEventListener('change', function() {
     let root = document.documentElement;
     if (this.checked) {
-	root.style.setProperty('--main-width', screen.width-width-20+'px');
+	root.style.setProperty('--main-width', screen.width-width+'px');
         root.style.setProperty('--bg-color', 'rgb(45, 51, 59)');
         root.style.setProperty('--bg-color-2', 'rgb(34, 39, 46)');
         root.style.setProperty('--bg-color-3', 'rgb(100, 18, 100)');
@@ -90,7 +90,7 @@ checkUi.addEventListener('change', function() {
         root.style.setProperty('--color', 'rgb(205, 217, 229)');
         root.style.setProperty('--folder-color', 'rgb(205, 217, 229)');
     } else {
-	root.style.setProperty('--main-width', screen.width-width-20+'px');
+	root.style.setProperty('--main-width', screen.width-width+'px');
         root.style.setProperty('--bg-color', 'black');
         root.style.setProperty('--bg-color-2', 'white');
         root.style.setProperty('--bg-color-3', '#f3f3f3');
