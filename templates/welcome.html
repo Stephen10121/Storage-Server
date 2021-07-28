@@ -189,7 +189,7 @@
                             {% set f=i+'3' %}
                             {% if i=="shared" or i=='trash' or "\\" in i or "/" in i %}
                             {% else %}
-                                <div class="menu">
+                                <div class="menu" id='menu-part'>
                                     <form method="POST">
                                         <input type="hidden" name='dirpath' value='{{ path }}'>
                                         <input type="submit" class="folder-name-input" name='chdir' value='{{i}}'>
