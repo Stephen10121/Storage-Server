@@ -187,7 +187,7 @@
                             {% set d=i+'1' %}
                             {% set e=i+'2' %}
                             {% set f=i+'3' %}
-                            {% if i=="shared" or i=='trash' or "\\" in i %}
+                            {% if i=="shared" or i=='trash' or "\\" in i or "/" in i %}
                             {% else %}
                                 <div class="menu">
                                     <form method="POST">
