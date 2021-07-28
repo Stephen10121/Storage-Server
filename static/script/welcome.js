@@ -1,3 +1,4 @@
+console.log(screen.width);
 function ShowNotification(what) {
     const notification = new Notification("From stephen15.tk.", {
         body: what
