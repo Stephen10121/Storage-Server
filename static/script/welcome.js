@@ -1,4 +1,8 @@
+let box = document.querySelector('.header');
+let width = box.offsetWidth;
+console.log(width);
 console.log(screen.width);
+console.log(screen.width-width);
 function ShowNotification(what) {
     const notification = new Notification("From stephen15.tk.", {
         body: what
