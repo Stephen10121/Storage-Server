@@ -6,7 +6,10 @@ console.log(screen.width-width);
 document.getElementById("main-class").style.width = screen.width-width;
 document.getElementById("footer-part").style.width = screen.width-width;
 document.getElementById("menu-part").style.width = screen.width-width-20;
-document.getElementByClassName("main").style.width = screen.width-width;
+let myElements = document.querySelectorAll(".main");
+for (let i = 0; i < myElements.length; i++) {
+	myElements[i].style.width = screen.width-width;
+}
 function ShowNotification(what) {
     const notification = new Notification("From stephen15.tk.", {
         body: what
