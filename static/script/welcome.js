@@ -74,11 +74,13 @@ function save() {
     })
 }
 
+// --main-width: 1268px;
 
 var checkUi = document.getElementById('light-mode');
 checkUi.addEventListener('change', function() {
     let root = document.documentElement;
     if (this.checked) {
+	root.style.setProperty('--main-width', '1268px');
         root.style.setProperty('--bg-color', 'rgb(45, 51, 59)');
         root.style.setProperty('--bg-color-2', 'rgb(34, 39, 46)');
         root.style.setProperty('--bg-color-3', 'rgb(100, 18, 100)');
@@ -87,6 +89,7 @@ checkUi.addEventListener('change', function() {
         root.style.setProperty('--color', 'rgb(205, 217, 229)');
         root.style.setProperty('--folder-color', 'rgb(205, 217, 229)');
     } else {
+	root.style.setProperty('--main-width', '1268px');
         root.style.setProperty('--bg-color', 'black');
         root.style.setProperty('--bg-color-2', 'white');
         root.style.setProperty('--bg-color-3', '#f3f3f3');
